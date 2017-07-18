@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="GithubDisplay.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:GithubDisplay.Converters"
+    xmlns:local="using:GithubDisplay"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InvBoolConverter x:Key="InvBoolConverter" />
+        <converters:NotEmptyStringToVisibilityConverter x:Key="NotEmptyStringToVisibilityConverter" />
+    </Application.Resources>
+</Application>
