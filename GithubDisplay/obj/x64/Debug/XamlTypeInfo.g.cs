@@ -132,7 +132,7 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[32];
+            _typeNameTable = new string[31];
             _typeNameTable[0] = "GithubDisplay.Converters.BoolToVisibilityConverter";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "GithubDisplay.Converters.InvBoolConverter";
@@ -152,8 +152,8 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
             _typeNameTable[16] = "GithubDisplay.MainPage";
             _typeNameTable[17] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[18] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[19] = "System.Collections.ObjectModel.ObservableCollection`1<GithubDisplay.Models.PullRequest>";
-            _typeNameTable[20] = "System.Collections.ObjectModel.Collection`1<GithubDisplay.Models.PullRequest>";
+            _typeNameTable[19] = "GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>";
+            _typeNameTable[20] = "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>";
             _typeNameTable[21] = "GithubDisplay.Models.PullRequest";
             _typeNameTable[22] = "String";
             _typeNameTable[23] = "Int32";
@@ -162,11 +162,10 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
             _typeNameTable[26] = "System.ValueType";
             _typeNameTable[27] = "Windows.UI.Xaml.Media.SolidColorBrush";
             _typeNameTable[28] = "GithubDisplay.Models.PRState";
-            _typeNameTable[29] = "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>";
-            _typeNameTable[30] = "GithubDisplay.SettingsPage";
-            _typeNameTable[31] = "System.Collections.Generic.List`1<String>";
+            _typeNameTable[29] = "GithubDisplay.SettingsPage";
+            _typeNameTable[30] = "System.Collections.Generic.List`1<String>";
 
-            _typeTable = new global::System.Type[32];
+            _typeTable = new global::System.Type[31];
             _typeTable[0] = typeof(global::GithubDisplay.Converters.BoolToVisibilityConverter);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::GithubDisplay.Converters.InvBoolConverter);
@@ -186,8 +185,8 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
             _typeTable[16] = typeof(global::GithubDisplay.MainPage);
             _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[19] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::GithubDisplay.Models.PullRequest>);
-            _typeTable[20] = typeof(global::System.Collections.ObjectModel.Collection<global::GithubDisplay.Models.PullRequest>);
+            _typeTable[19] = typeof(global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>);
+            _typeTable[20] = typeof(global::System.Collections.Generic.IList<global::GithubDisplay.Models.PullRequest>);
             _typeTable[21] = typeof(global::GithubDisplay.Models.PullRequest);
             _typeTable[22] = typeof(global::System.String);
             _typeTable[23] = typeof(global::System.Int32);
@@ -196,9 +195,8 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
             _typeTable[26] = typeof(global::System.ValueType);
             _typeTable[27] = typeof(global::Windows.UI.Xaml.Media.SolidColorBrush);
             _typeTable[28] = typeof(global::GithubDisplay.Models.PRState);
-            _typeTable[29] = typeof(global::System.Collections.Generic.IList<global::GithubDisplay.Models.PullRequest>);
-            _typeTable[30] = typeof(global::GithubDisplay.SettingsPage);
-            _typeTable[31] = typeof(global::System.Collections.Generic.List<global::System.String>);
+            _typeTable[29] = typeof(global::GithubDisplay.SettingsPage);
+            _typeTable[30] = typeof(global::System.Collections.Generic.List<global::System.String>);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -239,36 +237,23 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
         private object Activate_5_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
         private object Activate_8_Blur() { return new global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur(); }
         private object Activate_16_MainPage() { return new global::GithubDisplay.MainPage(); }
-        private object Activate_19_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::GithubDisplay.Models.PullRequest>(); }
-        private object Activate_20_Collection() { return new global::System.Collections.ObjectModel.Collection<global::GithubDisplay.Models.PullRequest>(); }
+        private object Activate_19_Tracker() { return new global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>(); }
         private object Activate_21_PullRequest() { return new global::GithubDisplay.Models.PullRequest(); }
-        private object Activate_30_SettingsPage() { return new global::GithubDisplay.SettingsPage(); }
-        private object Activate_31_List() { return new global::System.Collections.Generic.List<global::System.String>(); }
+        private object Activate_29_SettingsPage() { return new global::GithubDisplay.SettingsPage(); }
+        private object Activate_30_List() { return new global::System.Collections.Generic.List<global::System.String>(); }
         private void VectorAdd_5_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_19_ObservableCollection(object instance, object item)
+        private void VectorAdd_20_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::GithubDisplay.Models.PullRequest>)instance;
             var newItem = (global::GithubDisplay.Models.PullRequest)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_20_Collection(object instance, object item)
-        {
-            var collection = (global::System.Collections.Generic.ICollection<global::GithubDisplay.Models.PullRequest>)instance;
-            var newItem = (global::GithubDisplay.Models.PullRequest)item;
-            collection.Add(newItem);
-        }
-        private void VectorAdd_29_IList(object instance, object item)
-        {
-            var collection = (global::System.Collections.Generic.ICollection<global::GithubDisplay.Models.PullRequest>)instance;
-            var newItem = (global::GithubDisplay.Models.PullRequest)item;
-            collection.Add(newItem);
-        }
-        private void VectorAdd_31_List(object instance, object item)
+        private void VectorAdd_30_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
             var newItem = (global::System.String)item;
@@ -396,17 +381,17 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 19:   //  System.Collections.ObjectModel.ObservableCollection`1<GithubDisplay.Models.PullRequest>
-                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<GithubDisplay.Models.PullRequest>"));
-                userType.CollectionAdd = VectorAdd_19_ObservableCollection;
+            case 19:   //  GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>
+                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  System.Collections.ObjectModel.Collection`1<GithubDisplay.Models.PullRequest>
-                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_20_Collection;
-                userType.CollectionAdd = VectorAdd_20_Collection;
+            case 20:   //  System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>
+                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.CollectionAdd = VectorAdd_20_IList;
+                userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
@@ -476,25 +461,18 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 29:   //  System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>
-                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_29_IList;
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 30:   //  GithubDisplay.SettingsPage
+            case 29:   //  GithubDisplay.SettingsPage
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_30_SettingsPage;
+                userType.Activator = Activate_29_SettingsPage;
                 userType.AddMemberName("BackgroundItems");
                 userType.AddMemberName("SelectedValue");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  System.Collections.Generic.List`1<String>
+            case 30:   //  System.Collections.Generic.List`1<String>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_31_List;
+                userType.CollectionAdd = VectorAdd_30_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
@@ -564,157 +542,157 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
         private void set_6_MainPage_PullRequests(object instance, object Value)
         {
             var that = (global::GithubDisplay.MainPage)instance;
-            that.PullRequests = (global::System.Collections.ObjectModel.ObservableCollection<global::GithubDisplay.Models.PullRequest>)Value;
+            that.PullRequests = (global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>)Value;
         }
-        private object get_7_PullRequest_Name(object instance)
+        private object get_7_MainPage_PRsCodeReview(object instance)
+        {
+            var that = (global::GithubDisplay.MainPage)instance;
+            return that.PRsCodeReview;
+        }
+        private object get_8_PullRequest_Name(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.Name;
         }
-        private void set_7_PullRequest_Name(object instance, object Value)
+        private void set_8_PullRequest_Name(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.Name = (global::System.String)Value;
         }
-        private object get_8_PullRequest_Number(object instance)
+        private object get_9_PullRequest_Number(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.Number;
         }
-        private void set_8_PullRequest_Number(object instance, object Value)
+        private void set_9_PullRequest_Number(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.Number = (global::System.Int32)Value;
         }
-        private object get_9_PullRequest_AssigneeName(object instance)
+        private object get_10_PullRequest_AssigneeName(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.AssigneeName;
         }
-        private void set_9_PullRequest_AssigneeName(object instance, object Value)
+        private void set_10_PullRequest_AssigneeName(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.AssigneeName = (global::System.String)Value;
         }
-        private object get_10_PullRequest_IsReadyForReview(object instance)
+        private object get_11_PullRequest_IsReadyForReview(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.IsReadyForReview;
         }
-        private void set_10_PullRequest_IsReadyForReview(object instance, object Value)
+        private void set_11_PullRequest_IsReadyForReview(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.IsReadyForReview = (global::System.Boolean)Value;
         }
-        private object get_11_PullRequest_IsReviewed(object instance)
+        private object get_12_PullRequest_IsReviewed(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.IsReviewed;
         }
-        private void set_11_PullRequest_IsReviewed(object instance, object Value)
+        private void set_12_PullRequest_IsReviewed(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.IsReviewed = (global::System.Boolean)Value;
         }
-        private object get_12_PullRequest_IsBlocked(object instance)
+        private object get_13_PullRequest_IsBlocked(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.IsBlocked;
         }
-        private void set_12_PullRequest_IsBlocked(object instance, object Value)
+        private void set_13_PullRequest_IsBlocked(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.IsBlocked = (global::System.Boolean)Value;
         }
-        private object get_13_PullRequest_TestingState(object instance)
+        private object get_14_PullRequest_TestingState(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.TestingState;
         }
-        private void set_13_PullRequest_TestingState(object instance, object Value)
+        private void set_14_PullRequest_TestingState(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.TestingState = (global::GithubDisplay.Models.PullRequest.LabelState)Value;
         }
-        private object get_14_PullRequest_UXReviewState(object instance)
+        private object get_15_PullRequest_UXReviewState(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.UXReviewState;
         }
-        private void set_14_PullRequest_UXReviewState(object instance, object Value)
+        private void set_15_PullRequest_UXReviewState(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.UXReviewState = (global::GithubDisplay.Models.PullRequest.LabelState)Value;
         }
-        private object get_15_PullRequest_Mergable(object instance)
+        private object get_16_PullRequest_Mergable(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.Mergable;
         }
-        private void set_15_PullRequest_Mergable(object instance, object Value)
+        private void set_16_PullRequest_Mergable(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.Mergable = (global::System.Boolean)Value;
         }
-        private object get_16_PullRequest_HasChangeRequests(object instance)
+        private object get_17_PullRequest_HasChangeRequests(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.HasChangeRequests;
         }
-        private void set_16_PullRequest_HasChangeRequests(object instance, object Value)
+        private void set_17_PullRequest_HasChangeRequests(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.HasChangeRequests = (global::System.Boolean)Value;
         }
-        private object get_17_PullRequest_NumberOfApproved(object instance)
+        private object get_18_PullRequest_NumberOfApproved(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.NumberOfApproved;
         }
-        private void set_17_PullRequest_NumberOfApproved(object instance, object Value)
+        private void set_18_PullRequest_NumberOfApproved(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.NumberOfApproved = (global::System.Int32)Value;
         }
-        private object get_18_PullRequest_DesiredNumberOfApproved(object instance)
+        private object get_19_PullRequest_DesiredNumberOfApproved(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.DesiredNumberOfApproved;
         }
-        private void set_18_PullRequest_DesiredNumberOfApproved(object instance, object Value)
+        private void set_19_PullRequest_DesiredNumberOfApproved(object instance, object Value)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             that.DesiredNumberOfApproved = (global::System.Int32)Value;
         }
-        private object get_19_PullRequest_IsFailedTesting(object instance)
+        private object get_20_PullRequest_IsFailedTesting(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.IsFailedTesting;
         }
-        private object get_20_PullRequest_StatusBrush(object instance)
+        private object get_21_PullRequest_StatusBrush(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.StatusBrush;
         }
-        private object get_21_PullRequest_ErrorStatus(object instance)
+        private object get_22_PullRequest_ErrorStatus(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.ErrorStatus;
         }
-        private object get_22_PullRequest_CodeReviewStatus(object instance)
+        private object get_23_PullRequest_CodeReviewStatus(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.CodeReviewStatus;
         }
-        private object get_23_PullRequest_State(object instance)
+        private object get_24_PullRequest_State(object instance)
         {
             var that = (global::GithubDisplay.Models.PullRequest)instance;
             return that.State;
-        }
-        private object get_24_MainPage_PRsCodeReview(object instance)
-        {
-            var that = (global::GithubDisplay.MainPage)instance;
-            return that.PRsCodeReview;
         }
         private object get_25_MainPage_PRsTesting(object instance)
         {
@@ -818,116 +796,116 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 break;
             case "GithubDisplay.MainPage.PullRequests":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
-                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "PullRequests", "System.Collections.ObjectModel.ObservableCollection`1<GithubDisplay.Models.PullRequest>");
+                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "PullRequests", "GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>");
                 xamlMember.Getter = get_6_MainPage_PullRequests;
                 xamlMember.Setter = set_6_MainPage_PullRequests;
+                break;
+            case "GithubDisplay.MainPage.PRsCodeReview":
+                userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
+                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "PRsCodeReview", "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>");
+                xamlMember.Getter = get_7_MainPage_PRsCodeReview;
+                xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.Models.PullRequest.Name":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "Name", "String");
-                xamlMember.Getter = get_7_PullRequest_Name;
-                xamlMember.Setter = set_7_PullRequest_Name;
+                xamlMember.Getter = get_8_PullRequest_Name;
+                xamlMember.Setter = set_8_PullRequest_Name;
                 break;
             case "GithubDisplay.Models.PullRequest.Number":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "Number", "Int32");
-                xamlMember.Getter = get_8_PullRequest_Number;
-                xamlMember.Setter = set_8_PullRequest_Number;
+                xamlMember.Getter = get_9_PullRequest_Number;
+                xamlMember.Setter = set_9_PullRequest_Number;
                 break;
             case "GithubDisplay.Models.PullRequest.AssigneeName":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "AssigneeName", "String");
-                xamlMember.Getter = get_9_PullRequest_AssigneeName;
-                xamlMember.Setter = set_9_PullRequest_AssigneeName;
+                xamlMember.Getter = get_10_PullRequest_AssigneeName;
+                xamlMember.Setter = set_10_PullRequest_AssigneeName;
                 break;
             case "GithubDisplay.Models.PullRequest.IsReadyForReview":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsReadyForReview", "Boolean");
-                xamlMember.Getter = get_10_PullRequest_IsReadyForReview;
-                xamlMember.Setter = set_10_PullRequest_IsReadyForReview;
+                xamlMember.Getter = get_11_PullRequest_IsReadyForReview;
+                xamlMember.Setter = set_11_PullRequest_IsReadyForReview;
                 break;
             case "GithubDisplay.Models.PullRequest.IsReviewed":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsReviewed", "Boolean");
-                xamlMember.Getter = get_11_PullRequest_IsReviewed;
-                xamlMember.Setter = set_11_PullRequest_IsReviewed;
+                xamlMember.Getter = get_12_PullRequest_IsReviewed;
+                xamlMember.Setter = set_12_PullRequest_IsReviewed;
                 break;
             case "GithubDisplay.Models.PullRequest.IsBlocked":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsBlocked", "Boolean");
-                xamlMember.Getter = get_12_PullRequest_IsBlocked;
-                xamlMember.Setter = set_12_PullRequest_IsBlocked;
+                xamlMember.Getter = get_13_PullRequest_IsBlocked;
+                xamlMember.Setter = set_13_PullRequest_IsBlocked;
                 break;
             case "GithubDisplay.Models.PullRequest.TestingState":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "TestingState", "GithubDisplay.Models.PullRequest.LabelState");
-                xamlMember.Getter = get_13_PullRequest_TestingState;
-                xamlMember.Setter = set_13_PullRequest_TestingState;
+                xamlMember.Getter = get_14_PullRequest_TestingState;
+                xamlMember.Setter = set_14_PullRequest_TestingState;
                 break;
             case "GithubDisplay.Models.PullRequest.UXReviewState":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "UXReviewState", "GithubDisplay.Models.PullRequest.LabelState");
-                xamlMember.Getter = get_14_PullRequest_UXReviewState;
-                xamlMember.Setter = set_14_PullRequest_UXReviewState;
+                xamlMember.Getter = get_15_PullRequest_UXReviewState;
+                xamlMember.Setter = set_15_PullRequest_UXReviewState;
                 break;
             case "GithubDisplay.Models.PullRequest.Mergable":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "Mergable", "Boolean");
-                xamlMember.Getter = get_15_PullRequest_Mergable;
-                xamlMember.Setter = set_15_PullRequest_Mergable;
+                xamlMember.Getter = get_16_PullRequest_Mergable;
+                xamlMember.Setter = set_16_PullRequest_Mergable;
                 break;
             case "GithubDisplay.Models.PullRequest.HasChangeRequests":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "HasChangeRequests", "Boolean");
-                xamlMember.Getter = get_16_PullRequest_HasChangeRequests;
-                xamlMember.Setter = set_16_PullRequest_HasChangeRequests;
+                xamlMember.Getter = get_17_PullRequest_HasChangeRequests;
+                xamlMember.Setter = set_17_PullRequest_HasChangeRequests;
                 break;
             case "GithubDisplay.Models.PullRequest.NumberOfApproved":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "NumberOfApproved", "Int32");
-                xamlMember.Getter = get_17_PullRequest_NumberOfApproved;
-                xamlMember.Setter = set_17_PullRequest_NumberOfApproved;
+                xamlMember.Getter = get_18_PullRequest_NumberOfApproved;
+                xamlMember.Setter = set_18_PullRequest_NumberOfApproved;
                 break;
             case "GithubDisplay.Models.PullRequest.DesiredNumberOfApproved":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "DesiredNumberOfApproved", "Int32");
-                xamlMember.Getter = get_18_PullRequest_DesiredNumberOfApproved;
-                xamlMember.Setter = set_18_PullRequest_DesiredNumberOfApproved;
+                xamlMember.Getter = get_19_PullRequest_DesiredNumberOfApproved;
+                xamlMember.Setter = set_19_PullRequest_DesiredNumberOfApproved;
                 break;
             case "GithubDisplay.Models.PullRequest.IsFailedTesting":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsFailedTesting", "Boolean");
-                xamlMember.Getter = get_19_PullRequest_IsFailedTesting;
+                xamlMember.Getter = get_20_PullRequest_IsFailedTesting;
                 xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.Models.PullRequest.StatusBrush":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "StatusBrush", "Windows.UI.Xaml.Media.SolidColorBrush");
-                xamlMember.Getter = get_20_PullRequest_StatusBrush;
+                xamlMember.Getter = get_21_PullRequest_StatusBrush;
                 xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.Models.PullRequest.ErrorStatus":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "ErrorStatus", "String");
-                xamlMember.Getter = get_21_PullRequest_ErrorStatus;
+                xamlMember.Getter = get_22_PullRequest_ErrorStatus;
                 xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.Models.PullRequest.CodeReviewStatus":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "CodeReviewStatus", "String");
-                xamlMember.Getter = get_22_PullRequest_CodeReviewStatus;
+                xamlMember.Getter = get_23_PullRequest_CodeReviewStatus;
                 xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.Models.PullRequest.State":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.Models.PullRequest");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "State", "GithubDisplay.Models.PRState");
-                xamlMember.Getter = get_23_PullRequest_State;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "GithubDisplay.MainPage.PRsCodeReview":
-                userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
-                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "PRsCodeReview", "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>");
-                xamlMember.Getter = get_24_MainPage_PRsCodeReview;
+                xamlMember.Getter = get_24_PullRequest_State;
                 xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.MainPage.PRsTesting":

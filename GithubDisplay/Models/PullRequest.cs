@@ -395,6 +395,21 @@ namespace GithubDisplay.Models
             Passed,
             Failed,
         }
+
+        //public bool Merge(PullRequest newItem)
+        //{
+        //    this.AssigneeName = newItem.AssigneeName;
+        //    this.DesiredNumberOfApproved = newItem.DesiredNumberOfApproved;
+        //    this.HasChangeRequests = newItem.HasChangeRequests;
+        //    this.IsBlocked = newItem.IsBlocked;
+        //    this.IsReadyForReview = newItem.IsReadyForReview;
+        //    this.IsReviewed = newItem.IsReviewed;
+        //    this.Mergable = newItem.Mergable;
+        //    this.Name = newItem.Name;
+        //    this.TestingState = newItem.TestingState;
+        //    this.NumberOfApproved = newItem.NumberOfApproved;
+        //    this.UXReviewState = newItem.UXReviewState;
+        //}
     }
 
     public enum PRState
