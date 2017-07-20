@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-07-20T20:17:55.676</Modified>
+      <Modified>2017-07-20T22:30:52.753</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\bin\x64\Debug\GithubDisplay.exe">
       <PackagePath>entrypoint\GithubDisplay.exe</PackagePath>
-      <Modified>2017-07-20T20:17:55.001</Modified>
+      <Modified>2017-07-20T22:30:52.062</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\NolanBlew\.nuget\packages\AspNet.Security.OAuth.Extensions\1.0.0-rc1-final\lib\netstandard1.3\AspNet.Security.OAuth.Extensions.dll">
       <PackagePath>AspNet.Security.OAuth.Extensions.dll</PackagePath>
@@ -647,6 +647,10 @@
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
       <Modified>2016-08-09T15:14:36.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\Assets\c_background.jpg">
+      <PackagePath>Assets\c_background.jpg</PackagePath>
+      <Modified>2017-07-20T22:26:46.577</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2017-06-20T17:39:25.907</Modified>
@@ -696,11 +700,11 @@
     <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-07-20T20:08:13.272</Modified>
+      <Modified>2017-07-20T22:27:57.666</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\bin\x64\Debug\Core\GithubDisplay.exe">
       <PackagePath>GithubDisplay.exe</PackagePath>
-      <Modified>2017-07-20T20:17:55.661</Modified>
+      <Modified>2017-07-20T22:30:52.742</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

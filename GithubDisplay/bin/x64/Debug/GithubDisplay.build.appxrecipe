@@ -484,6 +484,9 @@
     <AppxPackagedFile Include="C:\Users\NolanBlew\.nuget\packages\Win2D.uwp\1.19.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\Assets\c_background.jpg">
+      <PackagePath>Assets\c_background.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
