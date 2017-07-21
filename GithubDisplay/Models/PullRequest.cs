@@ -22,6 +22,7 @@ namespace GithubDisplay.Models
             Number = pr.Number;
             Mergable = pr.Mergeable ?? true;
             AssigneeName = pr.Assignee.Login;
+            PrUrl = pr.HtmlUrl;
         }
 
         public PullRequest(Octokit.Issue issue) : this(issue, issue.PullRequest)  { }
@@ -95,6 +96,8 @@ namespace GithubDisplay.Models
 
         string _assigneeName;
 
+        string _prUrl;
+
         bool _isReadyForReview;
 
         bool _isReviewed;
@@ -142,6 +145,17 @@ namespace GithubDisplay.Models
             {
                 if (value == _assigneeName) return;
                 _assigneeName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PrUrl
+        {
+            get => _prUrl;
+            set
+            {
+                if (value == _prUrl) return;
+                _prUrl = value;
                 OnPropertyChanged();
             }
         }

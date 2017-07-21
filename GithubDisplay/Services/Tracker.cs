@@ -22,6 +22,8 @@ namespace GithubDisplay.Services
 
         public ObservableCollection<TrackedEntity<T>> Entities { get; private set; } = new ObservableCollection<TrackedEntity<T>>();
 
+        public IList<string> AllowedTrackedProperties { get; set; } = new List<string>();
+
         IEqualityComparer<T> _equalityComparer;
 
         /// <summary>
@@ -33,7 +35,9 @@ namespace GithubDisplay.Services
         {
             if (!IsTracked(entity))
             {
-                Entities.Add(new TrackedEntity<T>(entity));
+                var newTrackedEntity = new TrackedEntity<T>(entity, AllowedTrackedProperties.ToArray());
+                newTrackedEntity.PropertyChanged += NewTrackedEntity_PropertyChanged;
+                Entities.Add(newTrackedEntity);
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, entity));
             }
         }
@@ -89,7 +93,9 @@ namespace GithubDisplay.Services
         {
             if (IsTracked(entity))
             {
-                Entities.Remove(Entities.First(e => e.Equals(entity)));
+                var entityToRemove = Entities.First(e => e.Equals(entity));
+                entityToRemove.PropertyChanged -= NewTrackedEntity_PropertyChanged;
+                Entities.Remove(entityToRemove);
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, entity));
             }
         }
@@ -99,7 +105,30 @@ namespace GithubDisplay.Services
             return Entities.Any(e => e.Equals(entity, _equalityComparer));
         }
 
+        private void NewTrackedEntity_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(sender is T entity)
+            {
+                TrackedPropertyChanged?.Invoke(this, new TrackedPropertyChangedEvent<T>(entity, e.PropertyName));
+            }
+        }
+
         public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        public event EventHandler<TrackedPropertyChangedEvent<T>> TrackedPropertyChanged;
+    }
+
+    public class TrackedPropertyChangedEvent<T> : EventArgs
+    {
+        public TrackedPropertyChangedEvent(T entity, string propertyName)
+        {
+            Entity = entity;
+            PropertyName = propertyName;
+        }
+
+        public T Entity { get; private set; }
+
+        public string PropertyName { get; set; }
     }
 
     public class TrackedEntity<T> where T : INotifyPropertyChanged

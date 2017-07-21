@@ -64,8 +64,6 @@ namespace GithubDisplay
             }
         }
 
-        //ObservableCollection<Models.PullRequest> _pullRequests;
-
         Tracker<Models.PullRequest> _pullRequests;
 
         public Tracker<Models.PullRequest> PullRequests
@@ -146,6 +144,10 @@ namespace GithubDisplay
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => IsBusy = true);
 
             PullRequests = new Tracker<Models.PullRequest>(PullRequestComparer.Create());
+            PullRequests.AllowedTrackedProperties = new[] { nameof(Models.PullRequest.CodeReviewStatus),
+                                                            nameof(Models.PullRequest.ErrorStatus),
+                                                            nameof(Models.PullRequest.State) };
+            PullRequests.TrackedPropertyChanged += PullRequests_TrackedPropertyChanged;
 
             try
             {
@@ -161,7 +163,7 @@ namespace GithubDisplay
         async Task _Refresh()
         {
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => IsBusy = true);
-            System.Diagnostics.Debug.WriteLine($"Refresh at {DateTime.Now.TimeOfDay.ToString()}");
+            Debug.WriteLine($"Refresh at {DateTime.Now.TimeOfDay.ToString()}");
             try
             {
                 var prs = await _GetPullRequestsAsync();
@@ -241,8 +243,6 @@ namespace GithubDisplay
                 }
 
                 CurrentUser = await _client.User.Current();
-
-                PushService.SendPush("Login Successful", $"Welcome, {CurrentUser.Name}!");
 
                 _uwpRepository = await _client.Repository.Get("procore", "uwp");
             }
@@ -335,6 +335,52 @@ namespace GithubDisplay
                     //PullRequests = new ObservableCollection<Models.PullRequest>(prs)
                     PullRequests.Update(prs);
                 });
+        }
+        
+        void PullRequests_TrackedPropertyChanged(object sender, TrackedPropertyChangedEvent<Models.PullRequest> e)
+        {
+            if (e.Entity.AssigneeName != CurrentUser.Login) { return;  }
+
+            if (e.PropertyName == "TestingState") {
+                switch (e.Entity.TestingState)
+                {
+                    case Models.PullRequest.LabelState.Failed:
+                        PushService.SendPush("Testing Failed", $"Testing failed on {e.Entity.Name}", e.Entity.PrUrl);
+                        break;
+                    case Models.PullRequest.LabelState.Passed:
+                        string followup = "and is ready to be merged!";
+                        if (e.Entity.IsBlocked) followup = "but is blocked.";
+                        if (e.Entity.Mergable) followup = "but has merge conflicts.";
+                        if (e.Entity.HasChangeRequests) followup = "but has changes requested.";
+                        if (e.Entity.UXReviewState == Models.PullRequest.LabelState.Failed ||
+                            e.Entity.UXReviewState == Models.PullRequest.LabelState.Needed)
+                            followup = "but still needs to pass UX review.";
+
+                        PushService.SendPush("Testing Passed", $"Testing passed on {e.Entity.Name} {followup}", e.Entity.PrUrl);
+                        break;
+                }
+            }
+
+            if (e.PropertyName == "ErrorStatus")
+            {
+                if (!string.IsNullOrWhiteSpace(e.Entity.ErrorStatus))
+                {
+                    PushService.SendPush($"Problem with PR", $"Your PR {e.Entity.Name} {e.Entity.ErrorStatus}", e.Entity.PrUrl);
+                } else if (e.Entity.State == PRState.Done)
+                {
+                    PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
+                }
+            }
+
+            if (e.PropertyName == "State")
+            {
+                if (e.Entity.State == PRState.Done 
+                    && e.Entity.TestingState == Models.PullRequest.LabelState.None
+                    && string.IsNullOrEmpty(e.Entity.ErrorStatus))
+                {
+                    PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
