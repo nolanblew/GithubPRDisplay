@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
-using Octokit;
+﻿using Windows.Storage;
 
 namespace GithubDisplay.Services
 {
@@ -19,10 +13,12 @@ namespace GithubDisplay.Services
 
         const string _backgroundKey = "BACKGROUND_QUERY";
         const string _userToken = "USER_TOKEN";
+        const string _notificationOnProblem = "NOTIFICATION_ON_PROBLEM";
+        const string _notificationOnDone = "NOTIFICATION_ON_DONE";
 
         public static string BackgroundQuery
         {
-            get { return GetSetting<string>(_backgroundKey) ?? "Nature"; }
+            get { return GetSetting(_backgroundKey, "Nature"); }
             set { SaveSetting(_backgroundKey, value); }
         }
 
@@ -30,6 +26,18 @@ namespace GithubDisplay.Services
         {
             get { return GetSetting<string>(_userToken); }
             set { SaveSetting(_userToken, value); }
+        }
+
+        public static bool NotifyOnProblem
+        {
+            get { return (GetSetting(_notificationOnProblem, true)); }
+            set { SaveSetting(_notificationOnProblem, value); }
+        }
+
+        public static bool NotifyOnDone
+        {
+            get { return (GetSetting(_notificationOnDone, true)); }
+            set { SaveSetting(_notificationOnDone, value); }
         }
 
         static void SaveSetting(string key, object setting)
@@ -44,10 +52,30 @@ namespace GithubDisplay.Services
                 try
                 {
                     return (T)_localSettings.Values[key];
-                } catch { }
+                }
+                catch { }
             }
 
             return default(T);
+        }
+
+        static T GetSetting<T>(string key, T fallback)
+        {
+
+            if (!_localSettings.Values.ContainsKey(key))
+            {
+                _localSettings.Values.Add(key, fallback);
+                return fallback;
+            }
+
+            try
+            {
+                return (T)_localSettings.Values[key];
+            }
+            catch
+            {
+                return fallback;
+            }
         }
 
     }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,6 +20,11 @@ namespace GithubDisplay
         {
             this.InitializeComponent();
             SelectedValue = SettingsService.BackgroundQuery;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
         }
 
         public bool IsOnXbox => App.RunningOnXbox;
@@ -54,6 +60,18 @@ namespace GithubDisplay
             set { SettingsService.BackgroundQuery = value; }
         }
 
+        public bool NotifyOnProblem
+        {
+            get => SettingsService.NotifyOnProblem;
+            set => SettingsService.NotifyOnProblem = value;
+        }
+
+        public bool NotifyOnDone
+        {
+            get => SettingsService.NotifyOnDone;
+            set => SettingsService.NotifyOnDone = value;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -65,6 +83,11 @@ namespace GithubDisplay
         void Logout_Click(object sender, RoutedEventArgs e)
         {
             SettingsService.OauthToken = null;
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        void Back_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
             Frame.Navigate(typeof(MainPage));
         }
     }

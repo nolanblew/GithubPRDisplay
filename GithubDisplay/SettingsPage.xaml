@@ -24,12 +24,22 @@
                               SelectedItem="{x:Bind SelectedValue, Mode=TwoWay}"
                               ItemsSource="{x:Bind BackgroundItems, Mode=OneWay}"
                               Visibility="{x:Bind IsOnXbox, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                    <StackPanel Margin="0 15" Visibility="{x:Bind IsOnXbox, Converter={StaticResource InvBoolToVisibilityConverter}}">
+                        <TextBlock Text="Notification Settings" Style="{StaticResource TitleTextBlockStyle}" />
+
+                        <CheckBox Content="Notify me when one of my PRs has an issue" IsChecked="{x:Bind NotifyOnProblem, Mode=TwoWay}" />
+                        <CheckBox Content="Notify me when one of my PRs can be merged" IsChecked="{x:Bind NotifyOnDone, Mode=TwoWay}" />
+                    </StackPanel>
                     
                     <Button Content="Logout"
                             Visibility="{x:Bind IsOnXbox, Converter={StaticResource InvBoolToVisibilityConverter}}"
                             Click="Logout_Click"/>
                 </StackPanel>
             </Grid>
+
+            <Button Content="Go Back" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Grid.Row="1" Tapped="Back_Tapped"/>
         </Grid>
     </Grid>
 </Page>

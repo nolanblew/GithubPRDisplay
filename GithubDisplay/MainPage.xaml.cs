@@ -341,7 +341,7 @@ namespace GithubDisplay
         {
             if (e.Entity.AssigneeName != CurrentUser.Login) { return;  }
 
-            if (e.PropertyName == "TestingState") {
+            if (e.PropertyName == "TestingState" && SettingsService.NotifyOnDone) {
                 switch (e.Entity.TestingState)
                 {
                     case Models.PullRequest.LabelState.Failed:
@@ -361,7 +361,7 @@ namespace GithubDisplay
                 }
             }
 
-            if (e.PropertyName == "ErrorStatus")
+            if (e.PropertyName == "ErrorStatus" && SettingsService.NotifyOnProblem)
             {
                 if (!string.IsNullOrWhiteSpace(e.Entity.ErrorStatus))
                 {
@@ -372,7 +372,7 @@ namespace GithubDisplay
                 }
             }
 
-            if (e.PropertyName == "State")
+            if (e.PropertyName == "State" && SettingsService.NotifyOnDone)
             {
                 if (e.Entity.State == PRState.Done 
                     && e.Entity.TestingState == Models.PullRequest.LabelState.None
