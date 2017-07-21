@@ -169,7 +169,9 @@
                       Grid.Column="0"
                       ItemTemplate="{StaticResource ReviewTemplate}"
                       ItemsSource="{x:Bind PRsCodeReview, Mode=OneWay}"
-                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
+                      IsItemClickEnabled="True"
+                      ItemClick="PullRequest_ItemClick">
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection />
                 </ListView.ItemContainerTransitions>
@@ -185,7 +187,8 @@
                     Grid.Column="1">
                 <ListView ItemTemplate="{StaticResource ReviewTemplate}"
                           ItemsSource="{x:Bind PRsTesting, Mode=OneWay}"
-                          ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                          ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
+                          ItemClick="PullRequest_ItemClick">
                     <ListView.ItemContainerTransitions>
                         <TransitionCollection />
                     </ListView.ItemContainerTransitions>
@@ -202,7 +205,8 @@
                       Grid.Column="2"
                       ItemTemplate="{StaticResource ReviewTemplate}"
                       ItemsSource="{x:Bind PRsDone, Mode=OneWay}"
-                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
+                      ItemClick="PullRequest_ItemClick">
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection />
                 </ListView.ItemContainerTransitions>

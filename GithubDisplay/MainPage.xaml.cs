@@ -411,5 +411,13 @@ namespace GithubDisplay
         {
             Frame.Navigate(typeof(SettingsPage));
         }
+
+        async void PullRequest_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is Models.PullRequest pr)
+            {
+                await LauncherService.OpenWebsite(pr.PrUrl);
+            }
+        }
     }
 }
