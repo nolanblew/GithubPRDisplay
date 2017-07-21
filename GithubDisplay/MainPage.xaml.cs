@@ -207,7 +207,19 @@ namespace GithubDisplay
                 else
                 {
                     var startUrl =
-                        _client.Oauth.GetGitHubLoginUrl(new OauthLoginRequest(GithubDisplay.Resources.ClientId));
+                        _client.Oauth.GetGitHubLoginUrl(
+                            new OauthLoginRequest(GithubDisplay.Resources.ClientId)
+                            {
+                                Scopes =
+                                {
+                                    "user",
+                                    "public_repo",
+                                    "repo",
+                                    "notifications",
+                                    "read_repo_hook",
+                                    "read:org"
+                                }
+                            });
                     var redirectUrl = new Uri(GithubDisplay.Resources.ClientRedirectUrl);
 
                     var accessToken = SettingsService.OauthToken;
@@ -239,20 +251,22 @@ namespace GithubDisplay
                         accessToken = token.AccessToken;
                         SettingsService.OauthToken = accessToken;
                     }
-
                     _client.Credentials = new Credentials(accessToken);
                 }
 
                 CurrentUser = await _client.User.Current();
-
+                
                 _uwpRepository = await _client.Repository.Get("procore", "uwp");
             }
             catch (Exception ex)
             {
-                await new MessageDialog($"Error: {ex.Message}", "Error")
+                await new MessageDialog($"An error has occured. Please try again. Error: {ex.Message}", "Error")
                     .ShowAsync();
 
-                Application.Current.Exit();
+                SettingsService.OauthToken = null;
+
+                Login();
+                return;
             }
         }
 
