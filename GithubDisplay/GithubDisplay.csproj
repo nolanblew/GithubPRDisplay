@@ -173,7 +173,7 @@
   <ItemGroup>
     <Reference Include="Octokit, Version=0.24.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Source\Repos\octokit.net\Octokit\bin\Release\netstandard1.1\Octokit.dll</HintPath>
+      <HintPath>Octokit\Octokit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
