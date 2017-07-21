@@ -72,6 +72,12 @@ namespace GithubDisplay
             set => SettingsService.NotifyOnDone = value;
         }
 
+        public bool NotifyNewTesting
+        {
+            get => SettingsService.NotifyNewTesting;
+            set => SettingsService.NotifyNewTesting = value;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

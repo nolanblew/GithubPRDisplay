@@ -21,6 +21,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Application = Windows.UI.Xaml.Application;
 using Page = Windows.UI.Xaml.Controls.Page;
+using PullRequest = GithubDisplay.Models.PullRequest;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -339,7 +340,28 @@ namespace GithubDisplay
         
         void PullRequests_TrackedPropertyChanged(object sender, TrackedPropertyChangedEvent<Models.PullRequest> e)
         {
-            if (e.Entity.AssigneeName != CurrentUser.Login) { return;  }
+            var isMe = e.Entity.AssigneeName != CurrentUser.Login;
+            
+            if (e.PropertyName == "State")
+            {
+                if (e.Entity.State == PRState.Done
+                    && e.Entity.TestingState == Models.PullRequest.LabelState.None
+                    && string.IsNullOrEmpty(e.Entity.ErrorStatus)
+                    && SettingsService.NotifyOnDone
+                    && isMe)
+                {
+                    PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
+                }
+                else if
+                (e.Entity.State == PRState.Testing
+                    && e.Entity.TestingState == PullRequest.LabelState.Needed
+                    && SettingsService.NotifyNewTesting)
+                {
+                    PushService.SendPush("New PR Needs Testing", $"PR # {e.Entity.Number} ({e.Entity.Name}) is ready for testing.", e.Entity.PrUrl);
+                }
+            }
+
+            if (!isMe) { return; }
 
             if (e.PropertyName == "TestingState" && SettingsService.NotifyOnDone) {
                 switch (e.Entity.TestingState)
@@ -367,16 +389,6 @@ namespace GithubDisplay
                 {
                     PushService.SendPush($"Problem with PR", $"Your PR {e.Entity.Name} {e.Entity.ErrorStatus}", e.Entity.PrUrl);
                 } else if (e.Entity.State == PRState.Done)
-                {
-                    PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
-                }
-            }
-
-            if (e.PropertyName == "State" && SettingsService.NotifyOnDone)
-            {
-                if (e.Entity.State == PRState.Done 
-                    && e.Entity.TestingState == Models.PullRequest.LabelState.None
-                    && string.IsNullOrEmpty(e.Entity.ErrorStatus))
                 {
                     PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
                 }

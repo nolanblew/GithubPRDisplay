@@ -30,6 +30,7 @@
 
                         <CheckBox Content="Notify me when one of my PRs has an issue" IsChecked="{x:Bind NotifyOnProblem, Mode=TwoWay}" />
                         <CheckBox Content="Notify me when one of my PRs can be merged" IsChecked="{x:Bind NotifyOnDone, Mode=TwoWay}" />
+                        <CheckBox Content="Notify me when a new PR is in testing (for QA)" IsChecked="{x:Bind NotifyNewTesting, Mode=TwoWay}" />
                     </StackPanel>
                     
                     <Button Content="Logout"

@@ -15,6 +15,7 @@ namespace GithubDisplay.Services
         const string _userToken = "USER_TOKEN";
         const string _notificationOnProblem = "NOTIFICATION_ON_PROBLEM";
         const string _notificationOnDone = "NOTIFICATION_ON_DONE";
+        const string _notificationNewTesting = "NOTIFICATION_NEW_TESTING";
 
         public static string BackgroundQuery
         {
@@ -38,6 +39,12 @@ namespace GithubDisplay.Services
         {
             get { return (GetSetting(_notificationOnDone, true)); }
             set { SaveSetting(_notificationOnDone, value); }
+        }
+
+        public static bool NotifyNewTesting
+        {
+            get { return (GetSetting(_notificationNewTesting, false)); }
+            set { SaveSetting(_notificationNewTesting, value); }
         }
 
         static void SaveSetting(string key, object setting)

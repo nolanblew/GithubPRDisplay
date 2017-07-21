@@ -1,1 +1,1 @@
-D:\Users\Nolan\Source\Git\GithubPRDisplay\GithubDisplay\bin\ARM\Release\Upload\GithubDisplay_1.0.0.0\GithubDisplay_1.0.0.0_x86_x64_arm.appxbundle
+C:\Users\NolanBlew\Documents\Visual Studio 2017\Projects\GithubDisplay\GithubDisplay\bin\x64\Release\Upload\GithubDisplay_1.0.0.0\GithubDisplay_1.0.0.0_x86_x64.appxbundle
