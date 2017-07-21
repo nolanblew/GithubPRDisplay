@@ -162,7 +162,7 @@
             <TextBlock Grid.Row="0"
                        Grid.Column="0"
                        Style="{StaticResource HeaderStyle}">
-                Code Review (<Run x:ConnectionId='23'                                                  /> / <Run x:ConnectionId='24'                            /> max)
+                Code Review (<Run x:ConnectionId='25'                                                  /> / <Run x:ConnectionId='26'                            /> max)
             </TextBlock>
 
             <ListView x:ConnectionId='17' Grid.Row="2"
@@ -178,12 +178,12 @@
             <TextBlock Grid.Row="0"
                        Grid.Column="1"
                        Style="{StaticResource HeaderStyle}">
-                In Testing (<Run x:ConnectionId='22'                                               />)
+                In Testing (<Run x:ConnectionId='24'                                               />)
             </TextBlock>
 
             <Border Grid.Row="2"
                     Grid.Column="1">
-                <ListView x:ConnectionId='21' ItemTemplate="{StaticResource ReviewTemplate}"
+                <ListView x:ConnectionId='23' ItemTemplate="{StaticResource ReviewTemplate}"
                                                                         
                           ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
                     <ListView.ItemContainerTransitions>
@@ -195,7 +195,7 @@
             <TextBlock Grid.Row="0"
                        Grid.Column="2"
                        Style="{StaticResource HeaderStyle}">
-                Ready to Merge (<Run x:ConnectionId='20'                                            />)
+                Ready to Merge (<Run x:ConnectionId='22'                                            />)
             </TextBlock>
 
             <ListView x:ConnectionId='18' Grid.Row="2"
@@ -208,20 +208,27 @@
                 </ListView.ItemContainerTransitions>
             </ListView>
 
-            <Button x:ConnectionId='19' Grid.Row="2"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Background="Transparent"
-                                                 
-                    BorderBrush="Transparent"
-                    BorderThickness="0">
-                <Button.Content>
-                    <SymbolIcon Symbol="Setting" />
-                </Button.Content>
-            </Button>
-        </Grid>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="2" Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                <TextBlock x:ConnectionId='19' Margin="7" Foreground="Black" FontSize="12" VerticalAlignment="Center"
+                                                                                                                  >
+                    <Run Text="Welcome, " />
+                    <Run x:ConnectionId='21'                                                />!
+                </TextBlock>
 
+                <Button x:ConnectionId='20' Background="Transparent"
+                                                     
+                        BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Setting" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </Page>
 

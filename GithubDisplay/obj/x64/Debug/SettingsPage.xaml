@@ -18,10 +18,16 @@
             
             <Grid Grid.Row="1" Margin="0 15">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Background Images" Style="{StaticResource TitleTextBlockStyle}" />
-                    <ComboBox x:ConnectionId='2' Margin="4 15" MinWidth="200" 
+                    <TextBlock x:ConnectionId='2' Text="Background Images" Style="{StaticResource TitleTextBlockStyle}"
+                                                                                                                    />
+                    <ComboBox x:ConnectionId='3' Margin="4 15" MinWidth="200" 
                                                                                 
-                                                                                  />
+                                                                                 
+                                                                                                                   />
+                    
+                    <Button x:ConnectionId='4' Content="Logout"
+                                                                                                                   
+                                                />
                 </StackPanel>
             </Grid>
         </Grid>

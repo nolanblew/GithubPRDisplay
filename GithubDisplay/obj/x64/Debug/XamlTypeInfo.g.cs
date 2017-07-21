@@ -132,71 +132,77 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[31];
+            _typeNameTable = new string[34];
             _typeNameTable[0] = "GithubDisplay.Converters.BoolToVisibilityConverter";
             _typeNameTable[1] = "Object";
-            _typeNameTable[2] = "GithubDisplay.Converters.InvBoolConverter";
-            _typeNameTable[3] = "GithubDisplay.Converters.NotEmptyStringToVisibilityConverter";
-            _typeNameTable[4] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[5] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[6] = "Windows.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[7] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[8] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur";
-            _typeNameTable[9] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase`1<Windows.UI.Xaml.FrameworkElement>";
-            _typeNameTable[10] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase`1<Windows.UI.Xaml.FrameworkElement>";
-            _typeNameTable[11] = "Microsoft.Xaml.Interactivity.Behavior`1<Windows.UI.Xaml.FrameworkElement>";
-            _typeNameTable[12] = "Microsoft.Xaml.Interactivity.Behavior";
-            _typeNameTable[13] = "Double";
-            _typeNameTable[14] = "Boolean";
-            _typeNameTable[15] = "Windows.UI.Xaml.FrameworkElement";
-            _typeNameTable[16] = "GithubDisplay.MainPage";
-            _typeNameTable[17] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[18] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[19] = "GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>";
-            _typeNameTable[20] = "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>";
-            _typeNameTable[21] = "GithubDisplay.Models.PullRequest";
-            _typeNameTable[22] = "String";
-            _typeNameTable[23] = "Int32";
-            _typeNameTable[24] = "GithubDisplay.Models.PullRequest.LabelState";
-            _typeNameTable[25] = "System.Enum";
-            _typeNameTable[26] = "System.ValueType";
-            _typeNameTable[27] = "Windows.UI.Xaml.Media.SolidColorBrush";
-            _typeNameTable[28] = "GithubDisplay.Models.PRState";
-            _typeNameTable[29] = "GithubDisplay.SettingsPage";
-            _typeNameTable[30] = "System.Collections.Generic.List`1<String>";
+            _typeNameTable[2] = "GithubDisplay.Converters.InvBoolToVisibilityConverter";
+            _typeNameTable[3] = "GithubDisplay.Converters.InvBoolConverter";
+            _typeNameTable[4] = "GithubDisplay.Converters.NotEmptyStringToVisibilityConverter";
+            _typeNameTable[5] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[6] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[7] = "Windows.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[8] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[9] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur";
+            _typeNameTable[10] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase`1<Windows.UI.Xaml.FrameworkElement>";
+            _typeNameTable[11] = "Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase`1<Windows.UI.Xaml.FrameworkElement>";
+            _typeNameTable[12] = "Microsoft.Xaml.Interactivity.Behavior`1<Windows.UI.Xaml.FrameworkElement>";
+            _typeNameTable[13] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[14] = "Double";
+            _typeNameTable[15] = "Boolean";
+            _typeNameTable[16] = "Windows.UI.Xaml.FrameworkElement";
+            _typeNameTable[17] = "GithubDisplay.MainPage";
+            _typeNameTable[18] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[19] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[20] = "GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>";
+            _typeNameTable[21] = "System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>";
+            _typeNameTable[22] = "GithubDisplay.Models.PullRequest";
+            _typeNameTable[23] = "String";
+            _typeNameTable[24] = "Int32";
+            _typeNameTable[25] = "GithubDisplay.Models.PullRequest.LabelState";
+            _typeNameTable[26] = "System.Enum";
+            _typeNameTable[27] = "System.ValueType";
+            _typeNameTable[28] = "Windows.UI.Xaml.Media.SolidColorBrush";
+            _typeNameTable[29] = "GithubDisplay.Models.PRState";
+            _typeNameTable[30] = "Octokit.User";
+            _typeNameTable[31] = "Octokit.Account";
+            _typeNameTable[32] = "GithubDisplay.SettingsPage";
+            _typeNameTable[33] = "System.Collections.Generic.List`1<String>";
 
-            _typeTable = new global::System.Type[31];
+            _typeTable = new global::System.Type[34];
             _typeTable[0] = typeof(global::GithubDisplay.Converters.BoolToVisibilityConverter);
             _typeTable[1] = typeof(global::System.Object);
-            _typeTable[2] = typeof(global::GithubDisplay.Converters.InvBoolConverter);
-            _typeTable[3] = typeof(global::GithubDisplay.Converters.NotEmptyStringToVisibilityConverter);
-            _typeTable[4] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[5] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[6] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
-            _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[8] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur);
-            _typeTable[9] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase<global::Windows.UI.Xaml.FrameworkElement>);
-            _typeTable[10] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase<global::Windows.UI.Xaml.FrameworkElement>);
-            _typeTable[11] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Windows.UI.Xaml.FrameworkElement>);
-            _typeTable[12] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
-            _typeTable[13] = typeof(global::System.Double);
-            _typeTable[14] = typeof(global::System.Boolean);
-            _typeTable[15] = typeof(global::Windows.UI.Xaml.FrameworkElement);
-            _typeTable[16] = typeof(global::GithubDisplay.MainPage);
-            _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[19] = typeof(global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>);
-            _typeTable[20] = typeof(global::System.Collections.Generic.IList<global::GithubDisplay.Models.PullRequest>);
-            _typeTable[21] = typeof(global::GithubDisplay.Models.PullRequest);
-            _typeTable[22] = typeof(global::System.String);
-            _typeTable[23] = typeof(global::System.Int32);
-            _typeTable[24] = typeof(global::GithubDisplay.Models.PullRequest.LabelState);
-            _typeTable[25] = typeof(global::System.Enum);
-            _typeTable[26] = typeof(global::System.ValueType);
-            _typeTable[27] = typeof(global::Windows.UI.Xaml.Media.SolidColorBrush);
-            _typeTable[28] = typeof(global::GithubDisplay.Models.PRState);
-            _typeTable[29] = typeof(global::GithubDisplay.SettingsPage);
-            _typeTable[30] = typeof(global::System.Collections.Generic.List<global::System.String>);
+            _typeTable[2] = typeof(global::GithubDisplay.Converters.InvBoolToVisibilityConverter);
+            _typeTable[3] = typeof(global::GithubDisplay.Converters.InvBoolConverter);
+            _typeTable[4] = typeof(global::GithubDisplay.Converters.NotEmptyStringToVisibilityConverter);
+            _typeTable[5] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[6] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObjectCollection);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[9] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur);
+            _typeTable[10] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase<global::Windows.UI.Xaml.FrameworkElement>);
+            _typeTable[11] = typeof(global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase<global::Windows.UI.Xaml.FrameworkElement>);
+            _typeTable[12] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Windows.UI.Xaml.FrameworkElement>);
+            _typeTable[13] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[14] = typeof(global::System.Double);
+            _typeTable[15] = typeof(global::System.Boolean);
+            _typeTable[16] = typeof(global::Windows.UI.Xaml.FrameworkElement);
+            _typeTable[17] = typeof(global::GithubDisplay.MainPage);
+            _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[20] = typeof(global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>);
+            _typeTable[21] = typeof(global::System.Collections.Generic.IList<global::GithubDisplay.Models.PullRequest>);
+            _typeTable[22] = typeof(global::GithubDisplay.Models.PullRequest);
+            _typeTable[23] = typeof(global::System.String);
+            _typeTable[24] = typeof(global::System.Int32);
+            _typeTable[25] = typeof(global::GithubDisplay.Models.PullRequest.LabelState);
+            _typeTable[26] = typeof(global::System.Enum);
+            _typeTable[27] = typeof(global::System.ValueType);
+            _typeTable[28] = typeof(global::Windows.UI.Xaml.Media.SolidColorBrush);
+            _typeTable[29] = typeof(global::GithubDisplay.Models.PRState);
+            _typeTable[30] = typeof(global::Octokit.User);
+            _typeTable[31] = typeof(global::Octokit.Account);
+            _typeTable[32] = typeof(global::GithubDisplay.SettingsPage);
+            _typeTable[33] = typeof(global::System.Collections.Generic.List<global::System.String>);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -232,28 +238,30 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
         }
 
         private object Activate_0_BoolToVisibilityConverter() { return new global::GithubDisplay.Converters.BoolToVisibilityConverter(); }
-        private object Activate_2_InvBoolConverter() { return new global::GithubDisplay.Converters.InvBoolConverter(); }
-        private object Activate_3_NotEmptyStringToVisibilityConverter() { return new global::GithubDisplay.Converters.NotEmptyStringToVisibilityConverter(); }
-        private object Activate_5_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_8_Blur() { return new global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur(); }
-        private object Activate_16_MainPage() { return new global::GithubDisplay.MainPage(); }
-        private object Activate_19_Tracker() { return new global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>(); }
-        private object Activate_21_PullRequest() { return new global::GithubDisplay.Models.PullRequest(); }
-        private object Activate_29_SettingsPage() { return new global::GithubDisplay.SettingsPage(); }
-        private object Activate_30_List() { return new global::System.Collections.Generic.List<global::System.String>(); }
-        private void VectorAdd_5_BehaviorCollection(object instance, object item)
+        private object Activate_2_InvBoolToVisibilityConverter() { return new global::GithubDisplay.Converters.InvBoolToVisibilityConverter(); }
+        private object Activate_3_InvBoolConverter() { return new global::GithubDisplay.Converters.InvBoolConverter(); }
+        private object Activate_4_NotEmptyStringToVisibilityConverter() { return new global::GithubDisplay.Converters.NotEmptyStringToVisibilityConverter(); }
+        private object Activate_6_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_9_Blur() { return new global::Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur(); }
+        private object Activate_17_MainPage() { return new global::GithubDisplay.MainPage(); }
+        private object Activate_20_Tracker() { return new global::GithubDisplay.Services.Tracker<global::GithubDisplay.Models.PullRequest>(); }
+        private object Activate_22_PullRequest() { return new global::GithubDisplay.Models.PullRequest(); }
+        private object Activate_30_User() { return new global::Octokit.User(); }
+        private object Activate_32_SettingsPage() { return new global::GithubDisplay.SettingsPage(); }
+        private object Activate_33_List() { return new global::System.Collections.Generic.List<global::System.String>(); }
+        private void VectorAdd_6_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_20_IList(object instance, object item)
+        private void VectorAdd_21_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::GithubDisplay.Models.PullRequest>)instance;
             var newItem = (global::GithubDisplay.Models.PullRequest)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_30_List(object instance, object item)
+        private void VectorAdd_33_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
             var newItem = (global::System.String)item;
@@ -281,49 +289,56 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  GithubDisplay.Converters.InvBoolConverter
+            case 2:   //  GithubDisplay.Converters.InvBoolToVisibilityConverter
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_2_InvBoolConverter;
+                userType.Activator = Activate_2_InvBoolToVisibilityConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 3:   //  GithubDisplay.Converters.NotEmptyStringToVisibilityConverter
+            case 3:   //  GithubDisplay.Converters.InvBoolConverter
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_3_NotEmptyStringToVisibilityConverter;
+                userType.Activator = Activate_3_InvBoolConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 4:   //  GithubDisplay.Converters.NotEmptyStringToVisibilityConverter
+                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_4_NotEmptyStringToVisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 5:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 6:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObjectCollection"));
-                userType.CollectionAdd = VectorAdd_5_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_6_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 6:   //  Windows.UI.Xaml.DependencyObjectCollection
+            case 7:   //  Windows.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 7:   //  Windows.UI.Xaml.DependencyObject
+            case 8:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur
+            case 9:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase`1<Windows.UI.Xaml.FrameworkElement>"));
-                userType.Activator = Activate_8_Blur;
+                userType.Activator = Activate_9_Blur;
                 userType.AddMemberName("Value");
                 xamlType = userType;
                 break;
 
-            case 9:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase`1<Windows.UI.Xaml.FrameworkElement>
+            case 10:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.CompositionBehaviorBase`1<Windows.UI.Xaml.FrameworkElement>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase`1<Windows.UI.Xaml.FrameworkElement>"));
                 userType.AddMemberName("Duration");
                 userType.AddMemberName("Delay");
@@ -331,73 +346,75 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 10:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase`1<Windows.UI.Xaml.FrameworkElement>
+            case 11:   //  Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.BehaviorBase`1<Windows.UI.Xaml.FrameworkElement>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior`1<Windows.UI.Xaml.FrameworkElement>"));
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.Xaml.Interactivity.Behavior`1<Windows.UI.Xaml.FrameworkElement>
+            case 12:   //  Microsoft.Xaml.Interactivity.Behavior`1<Windows.UI.Xaml.FrameworkElement>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
                 userType.AddMemberName("AssociatedObject");
                 xamlType = userType;
                 break;
 
-            case 12:   //  Microsoft.Xaml.Interactivity.Behavior
+            case 13:   //  Microsoft.Xaml.Interactivity.Behavior
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.DependencyObject"));
                 xamlType = userType;
                 break;
 
-            case 13:   //  Double
+            case 14:   //  Double
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 14:   //  Boolean
+            case 15:   //  Boolean
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  Windows.UI.Xaml.FrameworkElement
+            case 16:   //  Windows.UI.Xaml.FrameworkElement
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 16:   //  GithubDisplay.MainPage
+            case 17:   //  GithubDisplay.MainPage
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_MainPage;
+                userType.Activator = Activate_17_MainPage;
                 userType.AddMemberName("PullRequests");
                 userType.AddMemberName("PRsCodeReview");
                 userType.AddMemberName("PRsTesting");
                 userType.AddMemberName("PRsDone");
                 userType.AddMemberName("MaxOpenPRs");
                 userType.AddMemberName("HasHitMaxPRs");
+                userType.AddMemberName("IsOnXbox");
                 userType.AddMemberName("IsBusy");
+                userType.AddMemberName("CurrentUser");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Windows.UI.Xaml.Controls.Page
+            case 18:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  Windows.UI.Xaml.Controls.UserControl
+            case 19:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 19:   //  GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>
+            case 20:   //  GithubDisplay.Services.Tracker`1<GithubDisplay.Models.PullRequest>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 20:   //  System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>
+            case 21:   //  System.Collections.Generic.IList`1<GithubDisplay.Models.PullRequest>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_20_IList;
+                userType.CollectionAdd = VectorAdd_21_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 21:   //  GithubDisplay.Models.PullRequest
+            case 22:   //  GithubDisplay.Models.PullRequest
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_21_PullRequest;
+                userType.Activator = Activate_22_PullRequest;
                 userType.AddMemberName("Name");
                 userType.AddMemberName("Number");
                 userType.AddMemberName("AssigneeName");
@@ -419,15 +436,15 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 22:   //  String
+            case 23:   //  String
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 23:   //  Int32
+            case 24:   //  Int32
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 24:   //  GithubDisplay.Models.PullRequest.LabelState
+            case 25:   //  GithubDisplay.Models.PullRequest.LabelState
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("None", global::GithubDisplay.Models.PullRequest.LabelState.None);
                 userType.AddEnumValue("Needed", global::GithubDisplay.Models.PullRequest.LabelState.Needed);
@@ -437,21 +454,21 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 25:   //  System.Enum
+            case 26:   //  System.Enum
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 xamlType = userType;
                 break;
 
-            case 26:   //  System.ValueType
+            case 27:   //  System.ValueType
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 27:   //  Windows.UI.Xaml.Media.SolidColorBrush
+            case 28:   //  Windows.UI.Xaml.Media.SolidColorBrush
                 xamlType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 28:   //  GithubDisplay.Models.PRState
+            case 29:   //  GithubDisplay.Models.PRState
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
                 userType.AddEnumValue("None", global::GithubDisplay.Models.PRState.None);
                 userType.AddEnumValue("CodeReview", global::GithubDisplay.Models.PRState.CodeReview);
@@ -461,18 +478,30 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 29:   //  GithubDisplay.SettingsPage
+            case 30:   //  Octokit.User
+                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Octokit.Account"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 31:   //  Octokit.Account
+                userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 32:   //  GithubDisplay.SettingsPage
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_SettingsPage;
+                userType.Activator = Activate_32_SettingsPage;
+                userType.AddMemberName("IsOnXbox");
                 userType.AddMemberName("BackgroundItems");
                 userType.AddMemberName("SelectedValue");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  System.Collections.Generic.List`1<String>
+            case 33:   //  System.Collections.Generic.List`1<String>
                 userType = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_30_List;
+                userType.CollectionAdd = VectorAdd_33_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
@@ -714,32 +743,52 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
             var that = (global::GithubDisplay.MainPage)instance;
             return that.HasHitMaxPRs;
         }
-        private object get_29_MainPage_IsBusy(object instance)
+        private object get_29_MainPage_IsOnXbox(object instance)
+        {
+            var that = (global::GithubDisplay.MainPage)instance;
+            return that.IsOnXbox;
+        }
+        private object get_30_MainPage_IsBusy(object instance)
         {
             var that = (global::GithubDisplay.MainPage)instance;
             return that.IsBusy;
         }
-        private void set_29_MainPage_IsBusy(object instance, object Value)
+        private void set_30_MainPage_IsBusy(object instance, object Value)
         {
             var that = (global::GithubDisplay.MainPage)instance;
             that.IsBusy = (global::System.Boolean)Value;
         }
-        private object get_30_SettingsPage_BackgroundItems(object instance)
+        private object get_31_MainPage_CurrentUser(object instance)
+        {
+            var that = (global::GithubDisplay.MainPage)instance;
+            return that.CurrentUser;
+        }
+        private void set_31_MainPage_CurrentUser(object instance, object Value)
+        {
+            var that = (global::GithubDisplay.MainPage)instance;
+            that.CurrentUser = (global::Octokit.User)Value;
+        }
+        private object get_32_SettingsPage_IsOnXbox(object instance)
+        {
+            var that = (global::GithubDisplay.SettingsPage)instance;
+            return that.IsOnXbox;
+        }
+        private object get_33_SettingsPage_BackgroundItems(object instance)
         {
             var that = (global::GithubDisplay.SettingsPage)instance;
             return that.BackgroundItems;
         }
-        private void set_30_SettingsPage_BackgroundItems(object instance, object Value)
+        private void set_33_SettingsPage_BackgroundItems(object instance, object Value)
         {
             var that = (global::GithubDisplay.SettingsPage)instance;
             that.BackgroundItems = (global::System.Collections.Generic.List<global::System.String>)Value;
         }
-        private object get_31_SettingsPage_SelectedValue(object instance)
+        private object get_34_SettingsPage_SelectedValue(object instance)
         {
             var that = (global::GithubDisplay.SettingsPage)instance;
             return that.SelectedValue;
         }
-        private void set_31_SettingsPage_SelectedValue(object instance, object Value)
+        private void set_34_SettingsPage_SelectedValue(object instance, object Value)
         {
             var that = (global::GithubDisplay.SettingsPage)instance;
             that.SelectedValue = (global::System.String)Value;
@@ -932,23 +981,41 @@ namespace GithubDisplay.GithubDisplay_XamlTypeInfo
                 xamlMember.Getter = get_28_MainPage_HasHitMaxPRs;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "GithubDisplay.MainPage.IsOnXbox":
+                userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
+                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsOnXbox", "Boolean");
+                xamlMember.Getter = get_29_MainPage_IsOnXbox;
+                xamlMember.SetIsReadOnly();
+                break;
             case "GithubDisplay.MainPage.IsBusy":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsBusy", "Boolean");
-                xamlMember.Getter = get_29_MainPage_IsBusy;
-                xamlMember.Setter = set_29_MainPage_IsBusy;
+                xamlMember.Getter = get_30_MainPage_IsBusy;
+                xamlMember.Setter = set_30_MainPage_IsBusy;
+                break;
+            case "GithubDisplay.MainPage.CurrentUser":
+                userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.MainPage");
+                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "CurrentUser", "Octokit.User");
+                xamlMember.Getter = get_31_MainPage_CurrentUser;
+                xamlMember.Setter = set_31_MainPage_CurrentUser;
+                break;
+            case "GithubDisplay.SettingsPage.IsOnXbox":
+                userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.SettingsPage");
+                xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "IsOnXbox", "Boolean");
+                xamlMember.Getter = get_32_SettingsPage_IsOnXbox;
+                xamlMember.SetIsReadOnly();
                 break;
             case "GithubDisplay.SettingsPage.BackgroundItems":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.SettingsPage");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "BackgroundItems", "System.Collections.Generic.List`1<String>");
-                xamlMember.Getter = get_30_SettingsPage_BackgroundItems;
-                xamlMember.Setter = set_30_SettingsPage_BackgroundItems;
+                xamlMember.Getter = get_33_SettingsPage_BackgroundItems;
+                xamlMember.Setter = set_33_SettingsPage_BackgroundItems;
                 break;
             case "GithubDisplay.SettingsPage.SelectedValue":
                 userType = (global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GithubDisplay.SettingsPage");
                 xamlMember = new global::GithubDisplay.GithubDisplay_XamlTypeInfo.XamlMember(this, "SelectedValue", "String");
-                xamlMember.Getter = get_31_SettingsPage_SelectedValue;
-                xamlMember.Setter = set_31_SettingsPage_SelectedValue;
+                xamlMember.Getter = get_34_SettingsPage_SelectedValue;
+                xamlMember.Setter = set_34_SettingsPage_SelectedValue;
                 break;
             }
             return xamlMember;

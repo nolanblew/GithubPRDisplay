@@ -208,19 +208,26 @@
                 </ListView.ItemContainerTransitions>
             </ListView>
 
-            <Button Grid.Row="2"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Background="Transparent"
-                    Click="Settings_Button_Click"
-                    BorderBrush="Transparent"
-                    BorderThickness="0">
-                <Button.Content>
-                    <SymbolIcon Symbol="Setting" />
-                </Button.Content>
-            </Button>
-        </Grid>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="2" Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                <TextBlock Margin="7" Foreground="Black" FontSize="12" VerticalAlignment="Center"
+                           Visibility="{x:Bind IsOnXbox, Converter={StaticResource InvBoolToVisibilityConverter}}">
+                    <Run Text="Welcome, " />
+                    <Run Text="{x:Bind CurrentUser.Login, Mode=OneWay}" />!
+                </TextBlock>
 
+                <Button Background="Transparent"
+                        Click="Settings_Button_Click"
+                        BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Setting" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
 </Page>

@@ -99,6 +99,7 @@
     <Compile Include="Comparers\PullRequestComparer.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InvBoolConverter.cs" />
+    <Compile Include="Converters\InvBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\NotEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Extentions\Extentions.cs" />
     <Compile Include="MainPage.xaml.cs">

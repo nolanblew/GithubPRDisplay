@@ -3,6 +3,7 @@ using GithubDisplay.Services;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -19,6 +20,13 @@ namespace GithubDisplay
             this.InitializeComponent();
             SelectedValue = SettingsService.BackgroundQuery;
         }
+        
+        public bool IsOnXbox =>
+#if XBOX
+            true;
+#else
+            false;
+#endif
 
         List<string> _backgroundItems = new List<string>
         {
@@ -57,6 +65,12 @@ namespace GithubDisplay
         void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsService.OauthToken = null;
+            Frame.Navigate(typeof(MainPage));
         }
     }
 }

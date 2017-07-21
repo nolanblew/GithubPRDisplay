@@ -18,10 +18,16 @@
             
             <Grid Grid.Row="1" Margin="0 15">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Background Images" Style="{StaticResource TitleTextBlockStyle}" />
+                    <TextBlock Text="Background Images" Style="{StaticResource TitleTextBlockStyle}"
+                               Visibility="{x:Bind IsOnXbox, Converter={StaticResource BoolToVisibilityConverter}}" />
                     <ComboBox Margin="4 15" MinWidth="200" 
                               SelectedItem="{x:Bind SelectedValue, Mode=TwoWay}"
-                              ItemsSource="{x:Bind BackgroundItems, Mode=OneWay}" />
+                              ItemsSource="{x:Bind BackgroundItems, Mode=OneWay}"
+                              Visibility="{x:Bind IsOnXbox, Converter={StaticResource BoolToVisibilityConverter}}" />
+                    
+                    <Button Content="Logout"
+                            Visibility="{x:Bind IsOnXbox, Converter={StaticResource InvBoolToVisibilityConverter}}"
+                            Click="Logout_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>

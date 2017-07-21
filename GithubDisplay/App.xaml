@@ -8,6 +8,7 @@
 
     <Application.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InvBoolToVisibilityConverter x:Key="InvBoolToVisibilityConverter" />
         <converters:InvBoolConverter x:Key="InvBoolConverter" />
         <converters:NotEmptyStringToVisibilityConverter x:Key="NotEmptyStringToVisibilityConverter" />
     </Application.Resources>
