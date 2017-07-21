@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="aac12e89-ea4c-40a8-aa2a-eafe407ab8e7" Publisher="CN=NolanBlew" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="aac12e89-ea4c-40a8-aa2a-eafe407ab8e7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="63560nblew.ProcoreWindowsGithubDisplay" Publisher="CN=8AF71ED0-2DAA-4AD5-8FE8-6C23C3621DB7" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="51bd9aa7-af59-48bf-8e66-e142fbf3fe66" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>GithubDisplay</DisplayName>
-    <PublisherDisplayName>NolanBlew</PublisherDisplayName>
+    <DisplayName>Procore Windows Github Display</DisplayName>
+    <PublisherDisplayName>nblew</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="GithubDisplay.App">
-      <uap:VisualElements DisplayName="Github PR Display" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="GithubDisplay" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Procore Windows Github Display" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="GithubDisplay" BackgroundColor="transparent">
         <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" ShortName="Github PRs">
           <uap:ShowNameOnTiles>
