@@ -210,3 +210,6 @@ project.lock.json
 
 # FAKE - F# Make
 .fake/
+
+# Security
+SecretResources.cs
