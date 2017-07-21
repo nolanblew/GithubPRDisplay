@@ -20,13 +20,8 @@ namespace GithubDisplay
             this.InitializeComponent();
             SelectedValue = SettingsService.BackgroundQuery;
         }
-        
-        public bool IsOnXbox =>
-#if XBOX
-            true;
-#else
-            false;
-#endif
+
+        public bool IsOnXbox => App.RunningOnXbox;
 
         List<string> _backgroundItems = new List<string>
         {

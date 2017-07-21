@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -32,6 +33,14 @@ namespace GithubDisplay
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        public static bool RunningOnXbox
+        {
+            get
+            {
+                return AnalyticsInfo.VersionInfo.DeviceFamily.ToLower().Contains("xbox");
+            }
         }
 
         /// <summary>
