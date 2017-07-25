@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
 using Windows.Security.Authentication.Web;
 using Windows.System;
@@ -153,7 +154,15 @@ namespace GithubDisplay
             try
             {
                 await Login();
-                _refreshTimer = new Timer((_) => _Refresh(), null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
+
+                if (BackgroundExecutionManager.GetAccessStatus() == BackgroundAccessStatus.Unspecified)
+                {
+                    await BackgroundExecutionManager.RequestAccessAsync();
+                }
+
+                BackgroundTaskService.StartTask(_Refresh());
+
+                _refreshTimer = new Timer(_ => _Refresh(), null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
             }
             finally
             {

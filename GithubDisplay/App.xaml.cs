@@ -153,5 +153,19 @@ namespace GithubDisplay
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        protected override async void OnBackgroundActivated(BackgroundActivatedEventArgs args)
+        {
+            base.OnBackgroundActivated(args);
+            var deferral = args.TaskInstance.GetDeferral();
+            try
+            {
+                await BackgroundTaskService.TaskToRun;
+            }
+            finally
+            {
+                deferral.Complete();
+            }
+        }
     }
 }

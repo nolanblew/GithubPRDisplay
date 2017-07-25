@@ -21,7 +21,7 @@ namespace GithubDisplay.Models
             Name = pr.Title;
             Number = pr.Number;
             Mergable = pr.Mergeable ?? true;
-            AssigneeName = pr.Assignee.Login;
+            AssigneeName = pr.Assignee?.Login ?? "[no assignee]";
             PrUrl = pr.HtmlUrl;
         }
 
