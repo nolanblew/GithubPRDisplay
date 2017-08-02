@@ -35,6 +35,7 @@ namespace GithubDisplay.Models
             IsReviewed = labels.Contains("Passed Review");
             IsBlocked = labels.Contains("Blocked");
             IsReadyForReview = labels.Contains("Ready for review");
+            IsDoNotMerge = labels.Contains("Do Not Merge");
             if (labels.Contains("Passed Testing"))
             {
                 TestingState = LabelState.Passed;
@@ -104,6 +105,8 @@ namespace GithubDisplay.Models
 
         bool _isBlocked;
 
+        bool _isDoNotMerge;
+
         LabelState _testingState;
 
         LabelState _uxReviewState;
@@ -145,6 +148,17 @@ namespace GithubDisplay.Models
             {
                 if (value == _assigneeName) return;
                 _assigneeName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsDoNotMerge
+        {
+            get => _isDoNotMerge;
+            set
+            {
+                if (value == _isDoNotMerge) return;
+                _isDoNotMerge = value;
                 OnPropertyChanged();
             }
         }
@@ -318,6 +332,11 @@ namespace GithubDisplay.Models
                 if (IsBlocked && State == PRState.Done)
                 {
                     return "Blocked";
+                }
+
+                if (IsDoNotMerge && State == PRState.Done)
+                {
+                    return "Do Not Merge";
                 }
 
                 return string.Empty;
