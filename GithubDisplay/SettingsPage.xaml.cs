@@ -78,6 +78,12 @@ namespace GithubDisplay
             set => SettingsService.NotifyNewTesting = value;
         }
 
+        public bool IsPersonalStatus
+        {
+            get => SettingsService.IsPersonalStatus;
+            set => SettingsService.IsPersonalStatus = value;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

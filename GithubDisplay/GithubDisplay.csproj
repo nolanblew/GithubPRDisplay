@@ -106,6 +106,7 @@
     <Compile Include="Converters\InvBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\NotEmptyStringToVisibilityConverter.cs" />
     <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="Extentions\ListExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +125,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ReviewItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

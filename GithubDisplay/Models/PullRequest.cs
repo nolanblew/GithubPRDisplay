@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,6 +11,8 @@ using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 using GithubDisplay.Annotations;
+using GithubDisplay.Services;
+using GithubDisplay.ViewModels;
 using Octokit;
 
 namespace GithubDisplay.Models
@@ -24,8 +29,6 @@ namespace GithubDisplay.Models
             AssigneeName = pr.Assignee?.Login ?? "[no assignee]";
             PrUrl = pr.HtmlUrl;
         }
-
-        public PullRequest(Octokit.Issue issue) : this(issue, issue.PullRequest)  { }
 
         public PullRequest(Octokit.Issue issue, Octokit.PullRequest pullRequest)
             : this(pullRequest)
@@ -73,6 +76,8 @@ namespace GithubDisplay.Models
             IList<PullRequestReview> reviews)
             : this(issue, pullRequest)
         {
+            Reviews = new ObservableCollection<PullRequestReview>(reviews);
+
             // TODO: Add logic to get PR state when api becomes available
             if (reviews.Any(
                 r => r.State == PullRequestReview.PullRequestReviewStates.ChangesRequested
@@ -91,7 +96,7 @@ namespace GithubDisplay.Models
             DesiredNumberOfApproved = _GetNumberOfDesiredApprovers(pullRequest.Body);
         }
 
-        string _name;
+            string _name;
 
         int _number;
 
@@ -110,6 +115,8 @@ namespace GithubDisplay.Models
         LabelState _testingState;
 
         LabelState _uxReviewState;
+
+        ObservableCollection<PullRequestReview> _reviews = new ObservableCollection<PullRequestReview>();
 
         bool _mergable;
 
@@ -234,6 +241,27 @@ namespace GithubDisplay.Models
             }
         }
 
+        public ObservableCollection<PullRequestReview> Reviews
+        {
+            get => _reviews;
+            set
+            {
+                if (Equals(value, _reviews)) return;
+                if (_reviews != null) _reviews.CollectionChanged -= ReviewsOnCollectionChanged;
+                _reviews = value;
+                _reviews.CollectionChanged += ReviewsOnCollectionChanged;
+                OnPropertyChanged();
+                _PropertyChanges();
+            }
+        }
+
+        void ReviewsOnCollectionChanged(
+            object sender,
+            NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
+            OnPropertyChanged(nameof(PersonalStatus));
+        }
+
         public bool Mergable
         {
             get => _mergable;
@@ -288,6 +316,11 @@ namespace GithubDisplay.Models
         {
             get
             {
+                if (SettingsService.IsPersonalStatus && AssigneeName != GithubDisplay.Resources.User.Login)
+                {
+                    return ReviewItem.StatusBrush as SolidColorBrush;
+                }
+
                 if (!string.IsNullOrEmpty(ErrorStatus))
                 {
                     return new SolidColorBrush(Colors.DarkRed);
@@ -343,6 +376,24 @@ namespace GithubDisplay.Models
             }
         }
 
+        public string PersonalStatus
+        {
+            get
+            {
+                var lastReview = Reviews.LastOrDefault(r => r.User.Login == Resources.User.Login && r.State != PullRequestReview.PullRequestReviewStates.Commented);
+
+                if (lastReview == null) return "Needs Review";
+                if (lastReview.State == PullRequestReview.PullRequestReviewStates.Approved) return "Approved";
+                if (lastReview.State == PullRequestReview.PullRequestReviewStates.ChangesRequested)
+                {
+                    // TODO: Find out if changes are in need of review again
+                    return "You Requested Changes";
+                }
+
+                return "Needs Review";
+            }
+        }
+
         public string CodeReviewStatus
         {
             get
@@ -390,6 +441,38 @@ namespace GithubDisplay.Models
             }
         }
 
+        public ReviewItem ReviewItem
+        {
+            get
+            {
+                var reviewItem = new ReviewItem();
+                reviewItem.Title = Name;
+                reviewItem.SecondaryText = $"#{Number} by {AssigneeName}";
+
+                if (SettingsService.IsPersonalStatus && AssigneeName != GithubDisplay.Resources.User.Login)
+                {
+                    reviewItem.Status = PersonalStatus;
+                    reviewItem.StatusBrush =
+                        new SolidColorBrush(PersonalStatus == "Approved" ? Colors.Green : Colors.DarkRed);
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(ErrorStatus))
+                    {
+                        reviewItem.Status = CodeReviewStatus;
+                        reviewItem.StatusBrush = new SolidColorBrush(Colors.Green);
+                    }
+                    else
+                    {
+                        reviewItem.Status = ErrorStatus;
+                        reviewItem.StatusBrush = new SolidColorBrush(Colors.DarkRed);
+                    }
+                }
+
+                return reviewItem;
+            }
+        }
+
         int _GetNumberOfDesiredApprovers(string body)
         {
             if (body.ToLower().Contains("approvers:"))
@@ -411,6 +494,8 @@ namespace GithubDisplay.Models
             OnPropertyChanged(nameof(StatusBrush));
             OnPropertyChanged(nameof(ErrorStatus));
             OnPropertyChanged(nameof(CodeReviewStatus));
+            OnPropertyChanged(nameof(PersonalStatus));
+            OnPropertyChanged(nameof(ReviewItem));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -428,21 +513,6 @@ namespace GithubDisplay.Models
             Passed,
             Failed,
         }
-
-        //public bool Merge(PullRequest newItem)
-        //{
-        //    this.AssigneeName = newItem.AssigneeName;
-        //    this.DesiredNumberOfApproved = newItem.DesiredNumberOfApproved;
-        //    this.HasChangeRequests = newItem.HasChangeRequests;
-        //    this.IsBlocked = newItem.IsBlocked;
-        //    this.IsReadyForReview = newItem.IsReadyForReview;
-        //    this.IsReviewed = newItem.IsReviewed;
-        //    this.Mergable = newItem.Mergable;
-        //    this.Name = newItem.Name;
-        //    this.TestingState = newItem.TestingState;
-        //    this.NumberOfApproved = newItem.NumberOfApproved;
-        //    this.UXReviewState = newItem.UXReviewState;
-        //}
     }
 
     public enum PRState
@@ -451,5 +521,32 @@ namespace GithubDisplay.Models
         CodeReview,
         Testing,
         Done,
+    }
+
+    public class PullRequestReviewComparer : IComparer<PullRequest>
+    {
+        public int Compare(PullRequest x, PullRequest y)
+        {
+            if (x.AssigneeName == GithubDisplay.Resources.User.Login
+                && y.AssigneeName != x.AssigneeName)
+                return 1;
+
+            if (y.AssigneeName == GithubDisplay.Resources.User.Login
+                && y.AssigneeName != x.AssigneeName)
+                return -1;
+
+            if (SettingsService.IsPersonalStatus)
+            {
+                if (x.PersonalStatus == "Approved"
+                    && y.PersonalStatus != "Approved")
+                    return 1;
+
+                if (y.PersonalStatus == "Approved"
+                    && x.PersonalStatus != "Approved")
+                    return -1;
+            }
+
+            return x.Number - y.Number;
+        }
     }
 }
