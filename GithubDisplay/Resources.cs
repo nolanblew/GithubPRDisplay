@@ -17,5 +17,7 @@
 
         // Define in a partial class with the filename SecretResources.cs
         public static string GithubBypassToken => GITHUB_BYPASS_TOKEN;
+
+        public static Octokit.User User { get; set; }
     }
 }

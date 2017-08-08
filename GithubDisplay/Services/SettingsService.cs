@@ -16,6 +16,7 @@ namespace GithubDisplay.Services
         const string _notificationOnProblem = "NOTIFICATION_ON_PROBLEM";
         const string _notificationOnDone = "NOTIFICATION_ON_DONE";
         const string _notificationNewTesting = "NOTIFICATION_NEW_TESTING";
+        const string _isPersonalStatus = "IS_PERSONAL_STATUS";
 
         public static string BackgroundQuery
         {
@@ -45,6 +46,28 @@ namespace GithubDisplay.Services
         {
             get { return (GetSetting(_notificationNewTesting, false)); }
             set { SaveSetting(_notificationNewTesting, value); }
+        }
+
+        static bool? _isPersonalStatusValue;
+
+        public static bool IsPersonalStatus
+        {
+            get
+            {
+                if (!_isPersonalStatusValue.HasValue)
+                {
+                    _isPersonalStatusValue = GetSetting(_isPersonalStatus, false);
+                }
+                return _isPersonalStatusValue.Value;
+            }
+            set
+            {
+                if (_isPersonalStatusValue != value)
+                {
+                    _isPersonalStatusValue = value;
+                    SaveSetting(_isPersonalStatus, value);
+                }
+            }
         }
 
         static void SaveSetting(string key, object setting)

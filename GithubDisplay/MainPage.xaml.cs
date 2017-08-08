@@ -19,6 +19,7 @@ using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 using Application = Windows.UI.Xaml.Application;
 using Page = Windows.UI.Xaml.Controls.Page;
@@ -36,6 +37,8 @@ namespace GithubDisplay
         GitHubClient _client;
         Repository _uwpRepository;
 
+        PullRequestReviewComparer _prComparer = new PullRequestReviewComparer();
+
         Api _api = new Api();
 
         Stack<string> _backgroundImages = new Stack<string>();
@@ -43,6 +46,8 @@ namespace GithubDisplay
         Timer _refreshTimer;
 
         bool _isImage1 = true;
+
+        bool _isFiltered = false;
 
         public MainPage()
         {
@@ -126,16 +131,14 @@ namespace GithubDisplay
             }
         }
 
-        Octokit.User _currentUser;
-
         public Octokit.User CurrentUser
         {
-            get { return _currentUser; }
+            get { return GithubDisplay.Resources.User; }
             set
             {
-                if (_currentUser != value)
+                if (GithubDisplay.Resources.User != value)
                 {
-                    _currentUser = value;
+                    GithubDisplay.Resources.User = value;
                     OnPropertyChanged();
                 }
             }
@@ -353,6 +356,7 @@ namespace GithubDisplay
                 }).ToList();
 
             var prs = await Task.WhenAll(prsTask);
+            prs = prs.OrderBy(pr => pr, _prComparer).ToArray();
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
                 () =>
                 {

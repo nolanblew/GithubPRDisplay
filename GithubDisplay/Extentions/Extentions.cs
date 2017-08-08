@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using System.Reflection;
 
 namespace GithubDisplay.Extentions
@@ -37,7 +38,7 @@ namespace GithubDisplay.Extentions
                 {
                     var originalValue = property.GetValue(originalEntity);
                     var newValue = property.GetValue(newEntity);
-
+                    
                     if (!originalValue.Equals(newValue))
                     {
                         property.SetValue(originalEntity, newValue);
