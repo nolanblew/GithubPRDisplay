@@ -215,7 +215,6 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom">
                 <StackPanel Margin="7" Visibility="{x:Bind IsOnXbox, Converter={StaticResource InvBoolToVisibilityConverter}}" Orientation="Horizontal">
-                    <!--<CheckBox Content="Show PRs relevent to me" FontSize="12" VerticalAlignment="Center" Margin="4 0"></CheckBox>-->
                     <TextBlock Margin="7" Foreground="Black" FontSize="12" VerticalAlignment="Center">
                         <Run Text="Welcome, " />
                         <Run Text="{x:Bind CurrentUser.Login, Mode=OneWay}" />!

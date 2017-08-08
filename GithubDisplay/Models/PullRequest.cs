@@ -96,7 +96,7 @@ namespace GithubDisplay.Models
             DesiredNumberOfApproved = _GetNumberOfDesiredApprovers(pullRequest.Body);
         }
 
-            string _name;
+        string _name;
 
         int _number;
 

@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace GithubDisplay.Services
 {
@@ -22,13 +21,10 @@ namespace GithubDisplay.Services
         }
 
         public ObservableCollection<TrackedEntity<T>> Entities { get; private set; } = new ObservableCollection<TrackedEntity<T>>();
-        public ObservableCollection<T> FilteredEntities { get; private set; } = new ObservableCollection<T>();
 
         public IList<string> AllowedTrackedProperties { get; set; } = new List<string>();
 
         IEqualityComparer<T> _equalityComparer;
-
-        Func<T, bool> _filter;
 
         /// <summary>
         /// Adds an entity to the tracker list. If the entity changes based on the allowed things to track,
@@ -43,7 +39,6 @@ namespace GithubDisplay.Services
                 newTrackedEntity.PropertyChanged += NewTrackedEntity_PropertyChanged;
                 Entities.Add(newTrackedEntity);
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, entity));
-                RefreshFilter();
             }
         }
 
@@ -61,7 +56,6 @@ namespace GithubDisplay.Services
                 {
                     CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, entity, oldEntity));
                 }
-                RefreshFilter();
             }
             else
             {
@@ -103,29 +97,7 @@ namespace GithubDisplay.Services
                 entityToRemove.PropertyChanged -= NewTrackedEntity_PropertyChanged;
                 Entities.Remove(entityToRemove);
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, entity));
-                RefreshFilter();
             }
-        }
-
-        public void RefreshFilter()
-        {
-            FilterEntities(_filter);
-        }
-
-        /// <summary>
-        /// Creates a filter on the entities. Access the entities from "FilteredEntities"
-        /// </summary>
-        /// <param name="filter">The filter to add to the entities</param>
-        public void FilterEntities(Func<T, bool> filter)
-        {
-            _filter = filter ?? (_ => true);
-            if (_filter == null)
-            {
-                FilteredEntities.UpdateAndSortFromList(Entities?.Select(e => e.Entity).ToList());
-                return;
-            }
-
-            FilteredEntities.UpdateAndSortFromList(Entities?.Select(e => e.Entity).Where(_filter).ToList());
         }
 
         public bool IsTracked(T entity)

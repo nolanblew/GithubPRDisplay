@@ -91,11 +91,6 @@ namespace GithubDisplay
                             OnPropertyChanged(nameof(PRsDone));
                             OnPropertyChanged(nameof(HasHitMaxPRs));
                         };
-
-                        value.FilteredEntities.CollectionChanged += (_, e) =>
-                        {
-                            OnPropertyChanged(nameof(PRsCodeReview));
-                        };
                     }
 
                     OnPropertyChanged(nameof(PRsCodeReview));
@@ -106,8 +101,8 @@ namespace GithubDisplay
             }
         }
 
-        public IList<Models.PullRequest> PRsCodeReview => PullRequests?.FilteredEntities.Where(
-            pr => pr.State == PRState.CodeReview).ToList();
+        public IList<Models.PullRequest> PRsCodeReview => PullRequests?.Entities.Where(
+            pr => pr.Entity.State == PRState.CodeReview).Select(pr => pr.Entity).ToList();
 
         public IList<Models.PullRequest> PRsTesting => PullRequests?.Entities.Where(
             pr => pr.Entity.State == PRState.Testing).Select(pr => pr.Entity).ToList();
