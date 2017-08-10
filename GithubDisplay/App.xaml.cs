@@ -10,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.System.Profile;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -34,6 +35,7 @@ namespace GithubDisplay
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Window.Current.Activated += CurrentOnActivated;
         }
 
         public static bool RunningOnXbox
@@ -166,6 +168,11 @@ namespace GithubDisplay
             {
                 deferral.Complete();
             }
+        }
+
+        void CurrentOnActivated(object sender, WindowActivatedEventArgs windowActivatedEventArgs)
+        {
+            PushService.ClearBadgeNotification();
         }
     }
 }

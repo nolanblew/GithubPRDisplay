@@ -9,7 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    GotFocus="MainPage_OnGotFocus">
 
     <Page.Resources>
         <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">
@@ -43,8 +44,15 @@
                                FontSize="13"
                                HorizontalAlignment="Right"/>
                 </Grid>
-            </Grid> 
+            </Grid>
         </DataTemplate>
+
+        <Style x:Key="PRListStyle" TargetType="ListView">
+            <Setter Property="ItemTemplate" Value="{StaticResource ReviewTemplate}" />
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemContainerStyle}" />
+            <Setter Property="IsItemClickEnabled" Value="True" />
+            <Setter Property="SelectionMode" Value="None" />
+        </Style>
 
         <Style x:Key="HeaderStyle" TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -163,10 +171,8 @@
 
             <ListView Grid.Row="2"
                       Grid.Column="0"
-                      ItemTemplate="{StaticResource ReviewTemplate}"
+                      Style="{StaticResource PRListStyle}"
                       ItemsSource="{x:Bind PRsCodeReview, Mode=OneWay}"
-                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
-                      IsItemClickEnabled="True"
                       ItemClick="PullRequest_ItemClick">
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection />
@@ -181,10 +187,8 @@
 
             <Border Grid.Row="2"
                     Grid.Column="1">
-                <ListView ItemTemplate="{StaticResource ReviewTemplate}"
-                          ItemsSource="{x:Bind PRsTesting, Mode=OneWay}"
-                          ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
-                          IsItemClickEnabled="True"
+                <ListView ItemsSource="{x:Bind PRsTesting, Mode=OneWay}"
+                          Style="{StaticResource PRListStyle}"
                           ItemClick="PullRequest_ItemClick">
                     <ListView.ItemContainerTransitions>
                         <TransitionCollection />
@@ -200,10 +204,8 @@
 
             <ListView Grid.Row="2"
                       Grid.Column="2"
-                      ItemTemplate="{StaticResource ReviewTemplate}"
+                      Style="{StaticResource PRListStyle}"
                       ItemsSource="{x:Bind PRsDone, Mode=OneWay}"
-                      ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"
-                      IsItemClickEnabled="True"
                       ItemClick="PullRequest_ItemClick">
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection />

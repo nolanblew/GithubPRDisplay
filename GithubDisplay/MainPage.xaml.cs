@@ -367,7 +367,7 @@ namespace GithubDisplay
         
         void PullRequests_TrackedPropertyChanged(object sender, TrackedPropertyChangedEvent<Models.PullRequest> e)
         {
-            var isMe = e.Entity.AssigneeName != CurrentUser.Login;
+            var isMe = e.Entity.AssigneeName == CurrentUser.Login;
             
             if (e.PropertyName == "State")
             {
@@ -457,6 +457,11 @@ namespace GithubDisplay
             {
                 await LauncherService.OpenWebsite(pr.PrUrl);
             }
+        }
+
+        void MainPage_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            PushService.ClearBadgeNotification();
         }
     }
 }

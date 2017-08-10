@@ -39,7 +39,7 @@ namespace GithubDisplay.Extentions
                     var originalValue = property.GetValue(originalEntity);
                     var newValue = property.GetValue(newEntity);
                     
-                    if (!originalValue.Equals(newValue))
+                    if (!_isEqual(originalValue, newValue))
                     {
                         property.SetValue(originalEntity, newValue);
                         hasChanges = true;
@@ -47,6 +47,17 @@ namespace GithubDisplay.Extentions
                 }
             }
             return hasChanges;
+        }
+
+        static bool _isEqual<T>(T originalValue, T newValue)
+        {
+            if (originalValue is IList originalList
+                && newValue is IList newList)
+            {
+                return originalList.Count == newList.Count;
+            }
+
+            return originalValue.Equals(newValue);
         }
     }
 }
