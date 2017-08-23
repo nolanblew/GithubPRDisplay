@@ -80,15 +80,15 @@ namespace GithubDisplay.Models
 
             // TODO: Add logic to get PR state when api becomes available
             if (reviews.Any(
-                r => r.State == PullRequestReview.PullRequestReviewStates.ChangesRequested
+                r => r.State == PullRequestReviewState.ChangesRequested
                     && reviews.Last(or => or.User.Login == r.User.Login).State
-                    == PullRequestReview.PullRequestReviewStates.ChangesRequested))
+                    == PullRequestReviewState.ChangesRequested))
             {
                 HasChangeRequests = true;
             }
             else
             {
-                var approved = reviews.Where(r => r.State == PullRequestReview.PullRequestReviewStates.Approved)
+                var approved = reviews.Where(r => r.State == PullRequestReviewState.Approved)
                                       .Select(r => r.User.Login);
                 NumberOfApproved = approved.Distinct().Count();
             }
@@ -380,11 +380,11 @@ namespace GithubDisplay.Models
         {
             get
             {
-                var lastReview = Reviews.LastOrDefault(r => r.User.Login == Resources.User.Login && r.State != PullRequestReview.PullRequestReviewStates.Commented);
+                var lastReview = Reviews.LastOrDefault(r => r.User.Login == Resources.User.Login && r.State != PullRequestReviewState.Commented);
 
                 if (lastReview == null) return "Needs Review";
-                if (lastReview.State == PullRequestReview.PullRequestReviewStates.Approved) return "Approved";
-                if (lastReview.State == PullRequestReview.PullRequestReviewStates.ChangesRequested)
+                if (lastReview.State == PullRequestReviewState.Approved) return "Approved";
+                if (lastReview.State == PullRequestReviewState.ChangesRequested)
                 {
                     // TODO: Find out if changes are in need of review again
                     return "You Requested Changes";
