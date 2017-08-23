@@ -351,7 +351,7 @@ namespace GithubDisplay
                 {
                     var number = int.Parse(i.PullRequest.Url.Substring(i.PullRequest.Url.LastIndexOf("/") + 1));
                     var pr = await _client.PullRequest.Get(_uwpRepository.Id, number);
-                    var reviews = await _client.PullRequest.Reviews.GetAll("procore", "uwp", pr.Number);
+                    var reviews = await _client.PullRequest.Review.GetAll("procore", "uwp", pr.Number);
                     return new Models.PullRequest(i, pr, reviews.ToList());
                 }).ToList();
 
