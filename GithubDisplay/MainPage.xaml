@@ -10,7 +10,8 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     mc:Ignorable="d"
-    GotFocus="MainPage_OnGotFocus">
+    GotFocus="MainPage_OnGotFocus"
+    PointerMoved="MainPage_OnPointerMoved">
 
     <Page.Resources>
         <Style x:Key="ListViewItemContainerStyle" TargetType="ListViewItem">

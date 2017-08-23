@@ -72,7 +72,7 @@ namespace GithubDisplay.Services
         {
             if (removeNonexistentEntities)
             {
-                var removals = Entities.Select(e => e.Entity).Except(entities, _equalityComparer);
+                var removals = Entities.Select(e => e.Entity).Except(entities, _equalityComparer).ToList();
                 foreach (var entity in removals)
                 {
                     Remove(entity);

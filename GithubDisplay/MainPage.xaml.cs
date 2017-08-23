@@ -463,5 +463,10 @@ namespace GithubDisplay
         {
             PushService.ClearBadgeNotification();
         }
+
+        void MainPage_OnPointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            PushService.ClearBadgeNotification();
+        }
     }
 }
