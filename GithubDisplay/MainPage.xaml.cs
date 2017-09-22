@@ -267,7 +267,7 @@ namespace GithubDisplay
                 }
 
                 CurrentUser = await _client.User.Current();
-                
+
                 _uwpRepository = await _client.Repository.Get("procore", "uwp");
             }
             catch (Exception ex)
@@ -307,12 +307,12 @@ namespace GithubDisplay
                         throw ex;
                     }
 
-                    return string.Empty;
+                    return "ms-appx:///Assets/c_background.jpg";
                 }
             }
             else
             {
-                return "ms-appx:///Assets/c_background.jpg";
+                return "";
             }
         }
 
@@ -364,11 +364,11 @@ namespace GithubDisplay
                     PullRequests.Update(prs);
                 });
         }
-        
+
         void PullRequests_TrackedPropertyChanged(object sender, TrackedPropertyChangedEvent<Models.PullRequest> e)
         {
             var isMe = e.Entity.AssigneeName == CurrentUser.Login;
-            
+
             if (e.PropertyName == "State")
             {
                 if (e.Entity.State == PRState.Done
