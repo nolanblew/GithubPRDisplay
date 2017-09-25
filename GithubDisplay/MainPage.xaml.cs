@@ -34,7 +34,10 @@ namespace GithubDisplay
     /// </summary>
     public sealed partial class MainPage : Page, INotifyPropertyChanged
     {
+        public const string DefaultBackgroundImagePath = "ms-appx:///Assets/c_background.jpg";
+
         GitHubClient _client;
+
         Repository _uwpRepository;
 
         PullRequestReviewComparer _prComparer = new PullRequestReviewComparer();
@@ -307,12 +310,12 @@ namespace GithubDisplay
                         throw ex;
                     }
 
-                    return "ms-appx:///Assets/c_background.jpg";
+                    return DefaultBackgroundImagePath;
                 }
             }
             else
             {
-                return "";
+                return DefaultBackgroundImagePath;
             }
         }
 
