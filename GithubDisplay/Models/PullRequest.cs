@@ -39,6 +39,7 @@ namespace GithubDisplay.Models
             IsBlocked = labels.Contains("Blocked");
             IsReadyForReview = labels.Contains("Ready for review");
             IsDoNotMerge = labels.Contains("Do Not Merge");
+            IsSmallChange = labels.Contains("Small Change");
             if (labels.Contains("Passed Testing"))
             {
                 TestingState = LabelState.Passed;
@@ -111,6 +112,8 @@ namespace GithubDisplay.Models
         bool _isBlocked;
 
         bool _isDoNotMerge;
+
+        bool _isSmallChange;
 
         LabelState _testingState;
 
@@ -212,6 +215,18 @@ namespace GithubDisplay.Models
             {
                 if (value == _isBlocked) return;
                 _isBlocked = value;
+                OnPropertyChanged();
+                _PropertyChanges();
+            }
+        }
+
+        public bool IsSmallChange
+        {
+            get => _isSmallChange;
+            set
+            {
+                if (value == _isSmallChange) return;
+                _isSmallChange = value;
                 OnPropertyChanged();
                 _PropertyChanges();
             }
@@ -531,20 +546,27 @@ namespace GithubDisplay.Models
                 && y.AssigneeName != x.AssigneeName)
                 return 1;
 
-            if (y.AssigneeName == GithubDisplay.Resources.User.Login
-                && y.AssigneeName != x.AssigneeName)
-                return -1;
-
-            if (SettingsService.IsPersonalStatus)
+            if (!(x.AssigneeName == y.AssigneeName
+                && x.AssigneeName == GithubDisplay.Resources.User.Login))
             {
-                if (x.PersonalStatus == "Approved"
-                    && y.PersonalStatus != "Approved")
-                    return 1;
 
-                if (y.PersonalStatus == "Approved"
-                    && x.PersonalStatus != "Approved")
+                if (x.IsSmallChange && !y.IsSmallChange)
+                {
+                    return 1;
+                }
+                else if (y.IsSmallChange && !x.IsSmallChange)
+                {
                     return -1;
+                }
             }
+
+            if (x.PersonalStatus == "Approved"
+                && y.PersonalStatus != "Approved")
+                return 1;
+
+            if (y.PersonalStatus == "Approved"
+                && x.PersonalStatus != "Approved")
+                return -1;
 
             return x.Number - y.Number;
         }

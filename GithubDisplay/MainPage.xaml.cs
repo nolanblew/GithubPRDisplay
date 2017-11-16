@@ -90,6 +90,7 @@ namespace GithubDisplay
                         value.CollectionChanged += (_, e) =>
                         {
                             OnPropertyChanged(nameof(PRsCodeReview));
+                            OnPropertyChanged(nameof(CurrentOpenPRsInCR));
                             OnPropertyChanged(nameof(PRsTesting));
                             OnPropertyChanged(nameof(PRsDone));
                             OnPropertyChanged(nameof(HasHitMaxPRs));
@@ -97,6 +98,7 @@ namespace GithubDisplay
                     }
 
                     OnPropertyChanged(nameof(PRsCodeReview));
+                    OnPropertyChanged(nameof(CurrentOpenPRsInCR));
                     OnPropertyChanged(nameof(PRsTesting));
                     OnPropertyChanged(nameof(PRsDone));
                     OnPropertyChanged(nameof(HasHitMaxPRs));
@@ -115,7 +117,9 @@ namespace GithubDisplay
 
         public int MaxOpenPRs => 7;
 
-        public bool HasHitMaxPRs => (PRsCodeReview?.Count ?? 0) >= MaxOpenPRs;
+        public int CurrentOpenPRsInCR => PRsCodeReview?.Count(pr => !pr.IsSmallChange) ?? 0;
+
+        public bool HasHitMaxPRs => CurrentOpenPRsInCR >= MaxOpenPRs;
 
         public bool IsOnXbox => App.RunningOnXbox;
 
