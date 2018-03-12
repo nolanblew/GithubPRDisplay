@@ -119,6 +119,8 @@ namespace GithubDisplay
 
         public bool HasHitMaxPRs => CurrentOpenPRsInCR >= MaxOpenPRs;
 
+        public bool HasFilters => SettingsService.FilteredLabels.Any();
+
         public bool IsOnXbox => App.RunningOnXbox;
 
         bool _isBusy;
@@ -432,6 +434,13 @@ namespace GithubDisplay
                     PushService.SendPush("Ready to Merge", $"Your PR {e.Entity.Name} is clear and ready to merge", e.Entity.PrUrl);
                 }
             }
+        }
+
+        void RemoveFilters_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            SettingsService.FilteredLabels = new List<string>();
+            OnPropertyChanged(nameof(HasFilters));
+            _Refresh();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

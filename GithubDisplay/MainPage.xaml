@@ -126,7 +126,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -135,7 +135,19 @@
         <Image x:Name="bckImage1" Stretch="UniformToFill" Grid.RowSpan="3" ImageOpened="BckImage1_OnImageOpened" />
         <Image x:Name="bckImage2" Stretch="UniformToFill" Grid.RowSpan="3" Opacity="0" ImageOpened="BckImage2_OnImageOpened" />
 
-        <Grid Grid.Row="0"></Grid>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"
+              Visibility="{x:Bind HasFilters, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="You have filters turned on."
+                           Margin="15 3"
+                           VerticalAlignment="Center"
+                           Foreground="{ThemeResource SystemControlBackgroundAltHighBrush}" />
+                <Button Content="Turn Off"
+                        Margin="10 0"
+                        Tapped="RemoveFilters_Tapped"/>
+            </StackPanel>
+        </Grid>
 
         <Button Grid.Row="1"
                 HorizontalAlignment="Center"
@@ -144,7 +156,8 @@
                 IsEnabled="{x:Bind IsBusy, Converter={StaticResource InvBoolConverter}, Mode=OneWay}"
                 Visibility="Collapsed"/>
 
-        <ProgressBar VerticalAlignment="Top" HorizontalAlignment="Stretch"
+        <ProgressBar Grid.Row="1"
+                     VerticalAlignment="Top" HorizontalAlignment="Stretch"
                      IsIndeterminate="True"
                      Visibility="{x:Bind IsBusy, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
                      Margin="25 5 25 0" />

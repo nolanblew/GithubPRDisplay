@@ -56,7 +56,7 @@ namespace GithubDisplay.Services
             get
             {
                 var value = GetSetting(_filteredLabels, string.Empty);
-                return value.Split(';').ToList();
+                return value.Split(';').Where(v => !string.IsNullOrWhiteSpace(v)).ToList();
             }
             set
             {
