@@ -36,9 +36,7 @@ namespace GithubDisplay
     {
         public const string DefaultBackgroundImagePath = "ms-appx:///Assets/c_background.jpg";
 
-        GitHubClient _client;
-
-        Repository _uwpRepository;
+        GithubService _githubService = new GithubService();
 
         PullRequestReviewComparer _prComparer = new PullRequestReviewComparer();
 
@@ -217,16 +215,16 @@ namespace GithubDisplay
         {
             try
             {
-                _client = new GitHubClient(new ProductHeaderValue(GithubDisplay.Resources.ClientName));
+                _githubService.Client = new GitHubClient(new ProductHeaderValue(GithubDisplay.Resources.ClientName));
 
                 if (IsOnXbox)
                 {
-                    _client.Credentials = new Credentials(GithubDisplay.Resources.GithubBypassToken);
+                    _githubService.Client.Credentials = new Credentials(GithubDisplay.Resources.GithubBypassToken);
                 }
                 else
                 {
                     var startUrl =
-                        _client.Oauth.GetGitHubLoginUrl(
+                        _githubService.Client.Oauth.GetGitHubLoginUrl(
                             new OauthLoginRequest(GithubDisplay.Resources.ClientId)
                             {
                                 Scopes =
@@ -260,7 +258,7 @@ namespace GithubDisplay
                         }
 
                         // Ask for auth token
-                        var token = await _client.Oauth.CreateAccessToken(
+                        var token = await _githubService.Client.Oauth.CreateAccessToken(
                             new OauthTokenRequest(
                                 GithubDisplay.Resources.ClientId,
                                 GithubDisplay.Resources.ClientSecret,
@@ -270,12 +268,12 @@ namespace GithubDisplay
                         accessToken = token.AccessToken;
                         SettingsService.OauthToken = accessToken;
                     }
-                    _client.Credentials = new Credentials(accessToken);
+                    _githubService.Client.Credentials = new Credentials(accessToken);
                 }
 
-                CurrentUser = await _client.User.Current();
+                CurrentUser = await _githubService.Client.User.Current();
 
-                _uwpRepository = await _client.Repository.Get("procore", "uwp");
+                _githubService.Repo = await _githubService.Client.Repository.Get("procore", "uwp");
             }
             catch (Exception ex)
             {
@@ -328,9 +326,16 @@ namespace GithubDisplay
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => IsBusy = true);
             try
             {
-                var issues = (await _client.Issue.GetAllForRepository(
-                        _uwpRepository.Id,
-                        new RepositoryIssueRequest {State = ItemStateFilter.Open}))
+                var labelFilters = SettingsService.FilteredLabels;
+                var repoSettings = new RepositoryIssueRequest {State = ItemStateFilter.Open};
+                if (labelFilters.Any())
+                {
+                    labelFilters.ForEach(label => repoSettings.Labels.Add(label));
+                }
+
+                var issues = (await _githubService.Client.Issue.GetAllForRepository(
+                        _githubService.Repo.Id,
+                        repoSettings))
                     .Where(i => i.PullRequest != null);
 
                 return issues.ToList();
@@ -357,8 +362,8 @@ namespace GithubDisplay
                 async i =>
                 {
                     var number = int.Parse(i.PullRequest.Url.Substring(i.PullRequest.Url.LastIndexOf("/") + 1));
-                    var pr = await _client.PullRequest.Get(_uwpRepository.Id, number);
-                    var reviews = await _client.PullRequest.Review.GetAll("procore", "uwp", pr.Number);
+                    var pr = await _githubService.Client.PullRequest.Get(_githubService.Repo.Id, number);
+                    var reviews = await _githubService.Client.PullRequest.Review.GetAll("procore", "uwp", pr.Number);
                     return new Models.PullRequest(i, pr, reviews.ToList());
                 }).ToList();
 

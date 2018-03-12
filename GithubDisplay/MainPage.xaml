@@ -127,6 +127,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
@@ -134,7 +135,9 @@
         <Image x:Name="bckImage1" Stretch="UniformToFill" Grid.RowSpan="3" ImageOpened="BckImage1_OnImageOpened" />
         <Image x:Name="bckImage2" Stretch="UniformToFill" Grid.RowSpan="3" Opacity="0" ImageOpened="BckImage2_OnImageOpened" />
 
-        <Button Grid.Row="0"
+        <Grid Grid.Row="0"></Grid>
+
+        <Button Grid.Row="1"
                 HorizontalAlignment="Center"
                 Content="Get PRs"
                 Click="ButtonBase_OnClick"
@@ -146,7 +149,7 @@
                      Visibility="{x:Bind IsBusy, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
                      Margin="25 5 25 0" />
         
-        <Grid Grid.Row="1" Margin="16">
+        <Grid Grid.Row="2" Margin="16">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />

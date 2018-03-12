@@ -542,33 +542,64 @@ namespace GithubDisplay.Models
     {
         public int Compare(PullRequest x, PullRequest y)
         {
-            if (x.AssigneeName == GithubDisplay.Resources.User.Login
-                && y.AssigneeName != x.AssigneeName)
-                return 1;
+            // Assign numbers to PR for priority
+            var xPriority = 1;
+            var yPriority = 1;
 
-            if (!(x.AssigneeName == y.AssigneeName
-                && x.AssigneeName == GithubDisplay.Resources.User.Login))
+            if (x.IsSmallChange)
+                xPriority = 2;
+            if (y.IsSmallChange)
+                yPriority = 2;
+
+            if (SettingsService.IsPersonalStatus)
             {
+                if (x.PersonalStatus == "Approved")
+                    xPriority = 3;
+                if (y.PersonalStatus == "Approved")
+                    yPriority = 3;
 
-                if (x.IsSmallChange && !y.IsSmallChange)
-                {
-                    return 1;
-                }
-                else if (y.IsSmallChange && !x.IsSmallChange)
-                {
-                    return -1;
-                }
+                if (x.AssigneeName == GithubDisplay.Resources.User.Login)
+                    xPriority = 4;
+                if (y.AssigneeName == GithubDisplay.Resources.User.Login)
+                    yPriority = 4;
             }
 
-            if (x.PersonalStatus == "Approved"
-                && y.PersonalStatus != "Approved")
+            if (xPriority > yPriority)
                 return 1;
 
-            if (y.PersonalStatus == "Approved"
-                && x.PersonalStatus != "Approved")
+            if (xPriority < yPriority)
                 return -1;
 
-            return x.Number - y.Number;
+            // Same category, so sort by date
+            return 0;
+
+            //if (x.AssigneeName == GithubDisplay.Resources.User.Login
+            //    && y.AssigneeName != x.AssigneeName)
+            //    return 1;
+
+            //if (!(x.AssigneeName == y.AssigneeName
+            //    && x.AssigneeName == GithubDisplay.Resources.User.Login))
+            //{
+
+            //    if (x.IsSmallChange && !y.IsSmallChange)
+            //    {
+            //        return -1;
+            //    }
+            //    else if (y.IsSmallChange && !x.IsSmallChange)
+            //    {
+            //        return 1;
+            //    }
+            //}
+
+            //if (x.PersonalStatus == "Approved"
+            //    && y.PersonalStatus != "Approved")
+            //    return 1;
+
+            //if (y.PersonalStatus == "Approved"
+            //    && x.PersonalStatus != "Approved")
+            //    return -1;
+
+            //return x.Number - y.Number;
         }
     }
 }

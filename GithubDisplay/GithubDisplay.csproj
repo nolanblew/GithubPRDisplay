@@ -118,6 +118,7 @@
     <Compile Include="Resources.cs" />
     <Compile Include="SecretResources.cs" />
     <Compile Include="Services\BackgroundTaskService.cs" />
+    <Compile Include="Services\GithubService.cs" />
     <Compile Include="Services\LauncherService.cs" />
     <Compile Include="Services\PushService.cs" />
     <Compile Include="Services\SettingsService.cs" />

@@ -1,4 +1,6 @@
-﻿using Windows.Storage;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Windows.Storage;
 
 namespace GithubDisplay.Services
 {
@@ -17,6 +19,7 @@ namespace GithubDisplay.Services
         const string _notificationOnDone = "NOTIFICATION_ON_DONE";
         const string _notificationNewTesting = "NOTIFICATION_NEW_TESTING";
         const string _isPersonalStatus = "IS_PERSONAL_STATUS";
+        const string _filteredLabels = "FILTERED_LABELS";
 
         public static string BackgroundQuery
         {
@@ -46,6 +49,20 @@ namespace GithubDisplay.Services
         {
             get { return (GetSetting(_notificationNewTesting, false)); }
             set { SaveSetting(_notificationNewTesting, value); }
+        }
+
+        public static List<string> FilteredLabels
+        {
+            get
+            {
+                var value = GetSetting(_filteredLabels, string.Empty);
+                return value.Split(';').ToList();
+            }
+            set
+            {
+                var labels = string.Join(";", value ?? new List<string>());
+                SaveSetting(_filteredLabels, labels);
+            }
         }
 
         static bool? _isPersonalStatusValue;
